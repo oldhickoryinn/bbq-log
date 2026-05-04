@@ -13,7 +13,6 @@
   }
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; }
-
   header { background: var(--smoke); color: #fff; padding: 1rem 1.25rem 0.75rem; position: sticky; top: 0; z-index: 100; }
   header h1 { font-size: 18px; font-weight: 700; }
   header .sub { font-size: 12px; color: #aaa; margin-top: 2px; }
@@ -21,10 +20,8 @@
   nav { display: flex; background: var(--smoke); border-top: 1px solid #333; }
   nav a { flex: 1; text-align: center; padding: 0.6rem; font-size: 12px; color: #aaa; text-decoration: none; font-weight: 600; border-bottom: 3px solid transparent; cursor: pointer; }
   nav a.active { color: var(--amber); border-bottom-color: var(--amber); }
-
   .cook-row { padding: 0.75rem 1rem 0.5rem; }
   .cook-select { width: 100%; padding: 0.7rem 0.9rem; border: 1.5px solid var(--border); border-radius: 8px; font-size: 15px; background: #fff; color: var(--text); font-weight: 600; }
-
   .voice-wrap { margin: 0 1rem 0.75rem; }
   .voice-btn { width: 100%; padding: 0.85rem 1rem; background: var(--smoke); color: #fff; border: none; border-radius: var(--radius); font-size: 15px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
   .voice-btn.listening { background: var(--ember); animation: vpulse 1s infinite; }
@@ -34,9 +31,7 @@
   .voice-hint { font-size: 11px; color: var(--muted); text-align: center; margin-top: 6px; line-height: 1.5; }
   .voice-transcript { margin-top: 7px; padding: 0.6rem 0.9rem; background: #fff; border: 1.5px solid var(--border); border-radius: 8px; font-size: 13px; color: var(--text); font-style: italic; display: none; }
   .voice-transcript.show { display: block; }
-
   .section-title { font-size: 11px; font-weight: 700; color: var(--bark); text-transform: uppercase; letter-spacing: 1px; padding: 0.6rem 1rem 0.35rem; }
-
   .item-row { background: #fff; border: 1.5px solid var(--border); margin: 0 1rem 8px; border-radius: var(--radius); padding: 0.7rem 1rem; display: flex; align-items: center; gap: 12px; transition: border-color 0.2s, background 0.2s; }
   .item-icon { width: 48px; height: 48px; flex-shrink: 0; }
   .item-info { flex: 1; min-width: 0; }
@@ -44,24 +39,19 @@
   .item-info .meta { font-size: 11px; color: var(--muted); margin-top: 1px; }
   .item-row.has-qty   { border-color: var(--bark); background: #fffaf5; }
   .item-row.voice-set { border-color: var(--green); background: #f2fbf4; }
-
   .portion-wrap { display: flex; gap: 5px; margin-top: 5px; }
   .portion-btn { padding: 3px 9px; border: 1.5px solid var(--border); border-radius: 6px; font-size: 12px; font-weight: 600; background: var(--cream); cursor: pointer; }
   .portion-btn.selected { border-color: var(--bark); background: var(--light); color: var(--bark); }
-
   .counter { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
   .qty-btn { width: 38px; height: 38px; border: 1.5px solid var(--border); border-radius: 8px; background: var(--light); font-size: 20px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; user-select: none; color: var(--bark); flex-shrink: 0; }
   .qty-btn:active { background: var(--border); }
   .qty-input { width: 56px; text-align: center; font-size: 21px; font-weight: 800; color: var(--bark); border: 1.5px solid var(--border); border-radius: 8px; padding: 0.25rem 0; background: #fff; }
   .weight-input { width: 76px; text-align: center; font-size: 19px; font-weight: 800; color: var(--bark); border: 1.5px solid var(--border); border-radius: 8px; padding: 0.3rem 0.2rem; background: #fff; }
-
   .notes-row { padding: 0 1rem 0.5rem; }
   .notes-input { width: 100%; padding: 0.65rem 0.9rem; border: 1.5px solid var(--border); border-radius: 8px; font-size: 15px; background: #fff; color: var(--text); }
-
   .log-btn { position: sticky; bottom: 0; z-index: 50; width: 100%; padding: 1.05rem; background: var(--bark); color: #fff; border: none; font-size: 18px; font-weight: 800; cursor: pointer; letter-spacing: 0.3px; box-shadow: 0 -2px 12px rgba(0,0,0,0.15); }
   .log-btn:active { background: var(--smoke); }
   .log-btn:disabled { background: var(--muted); }
-
   .totals-section { padding: 0.75rem 1rem 1rem; }
   .totals-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
   .totals-header { background: var(--smoke); color: #fff; padding: 0.6rem 1rem; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: space-between; }
@@ -72,7 +62,6 @@
   .total-zero { color: #ccc; }
   .refresh-btn { width: 100%; margin-top: 12px; padding: 0.75rem; background: #fff; border: 1.5px solid var(--border); border-radius: var(--radius); font-size: 14px; font-weight: 700; cursor: pointer; color: var(--bark); }
   .inv-btn { display: block; text-align: center; margin: 0.75rem 1rem 1.5rem; padding: 0.85rem; background: var(--smoke); color: var(--amber); border-radius: var(--radius); font-size: 14px; font-weight: 700; text-decoration: none; cursor: pointer; border: none; width: calc(100% - 2rem); }
-
   .toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: var(--green); color: #fff; padding: 0.75rem 1.5rem; border-radius: 50px; font-size: 15px; font-weight: 700; opacity: 0; transition: opacity 0.3s; pointer-events: none; white-space: nowrap; box-shadow: 0 4px 16px rgba(0,0,0,0.2); z-index: 200; }
   .toast.show { opacity: 1; }
   .toast.error { background: var(--ember); }
@@ -117,7 +106,7 @@
       </svg>
       <span id="voice-label">🎤 Tap to Speak Your Order</span>
     </button>
-    <div class="voice-hint">Say items and quantities naturally — <em>"22 chicken, 10 sausage, 5 jalapeño, 1 pork"</em></div>
+    <div class="voice-hint">Say items and quantities — <em>"5 brisket, 22 chicken, 10 pork ribs, 10 sausage"</em></div>
     <div class="voice-transcript" id="voice-transcript"></div>
   </div>
 
@@ -160,6 +149,27 @@
       <div class="qty-btn" onclick="adj('ribs',-1)">−</div>
       <input class="qty-input" type="number" id="qty-ribs" value="0" min="0" inputmode="numeric" onchange="highlight('ribs')">
       <div class="qty-btn" onclick="adj('ribs',1)">+</div>
+    </div>
+  </div>
+
+  <div class="item-row" id="row-pork_ribs">
+    <svg class="item-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+      <rect x="4"  y="24" width="40" height="15" rx="3" fill="#7A3010"/>
+      <rect x="4"  y="22" width="40" height="13" rx="3" fill="#9A4820"/>
+      <rect x="4"  y="21" width="40" height="11" rx="3" fill="#B85A28"/>
+      <rect x="7"  y="7"  width="5" height="17" rx="2.5" fill="#EEE4D0"/>
+      <rect x="14" y="5"  width="5" height="19" rx="2.5" fill="#F8EED8"/>
+      <rect x="21" y="6"  width="5" height="18" rx="2.5" fill="#EEE4D0"/>
+      <rect x="28" y="5"  width="5" height="19" rx="2.5" fill="#F8EED8"/>
+      <rect x="35" y="7"  width="5" height="17" rx="2.5" fill="#EEE4D0"/>
+      <rect x="4"  y="21" width="40" height="4"  rx="2" fill="#3A0800" opacity="0.25"/>
+      <rect x="6"  y="22" width="34" height="2"  rx="1" fill="#E8804A" opacity="0.3"/>
+    </svg>
+    <div class="item-info"><div class="name">Pork Ribs</div><div class="meta">slabs · 12/case</div></div>
+    <div class="counter">
+      <div class="qty-btn" onclick="adj('pork_ribs',-1)">−</div>
+      <input class="qty-input" type="number" id="qty-pork_ribs" value="0" min="0" inputmode="numeric" onchange="highlight('pork_ribs')">
+      <div class="qty-btn" onclick="adj('pork_ribs',1)">+</div>
     </div>
   </div>
 
@@ -352,29 +362,31 @@
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxeYHKYVZO_aLoHH0tOTGhubausZW81Kp48Z7-XF_iEobZhznCkBUumg3_WnJosDCP0/exec";
 
 const ITEMS = [
-  { id:"brisket",  label:"Brisket",         type:"count",   unit:"whole" },
-  { id:"ribs",     label:"Beef Ribs",        type:"count",   unit:"rack" },
-  { id:"chicken",  label:"Chicken",          type:"count",   unit:"half" },
-  { id:"pork",     label:"Pork",             type:"count",   unit:"whole" },
-  { id:"turkey",   label:"Turkey",           type:"count",   unit:"whole" },
-  { id:"riblets",  label:"Riblets",          type:"weight",  unit:"lbs" },
-  { id:"ham",      label:"Ham",              type:"portion", unit:"" },
-  { id:"gyro",     label:"Gyro Cone",        type:"count",   unit:"cone" },
-  { id:"sausage",  label:"Reg. Sausage",     type:"count",   unit:"link",  weightEach:1 },
-  { id:"jalapeno", label:"Jalapeño Sausage", type:"count",   unit:"piece", weightEach:0.25 }
+  { id:"brisket",   label:"Brisket",         type:"count",   unit:"whole" },
+  { id:"ribs",      label:"Beef Ribs",        type:"count",   unit:"rack" },
+  { id:"pork_ribs", label:"Pork Ribs",        type:"count",   unit:"slab" },
+  { id:"chicken",   label:"Chicken",          type:"count",   unit:"half" },
+  { id:"pork",      label:"Pork",             type:"count",   unit:"whole" },
+  { id:"turkey",    label:"Turkey",           type:"count",   unit:"whole" },
+  { id:"riblets",   label:"Riblets",          type:"weight",  unit:"lbs" },
+  { id:"ham",       label:"Ham",              type:"portion", unit:"" },
+  { id:"gyro",      label:"Gyro Cone",        type:"count",   unit:"cone" },
+  { id:"sausage",   label:"Reg. Sausage",     type:"count",   unit:"link",  weightEach:1 },
+  { id:"jalapeno",  label:"Jalapeño Sausage", type:"count",   unit:"piece", weightEach:0.25 }
 ];
 
 const VOICE_MAP = [
-  { id:"brisket",  keywords:["brisket","briskets"] },
-  { id:"ribs",     keywords:["beef rib","beef ribs","rib rack","rib racks","ribs","rib"] },
-  { id:"chicken",  keywords:["chicken","chickens","hen","hens"] },
-  { id:"pork",     keywords:["pork","butt","shoulder","pig"] },
-  { id:"turkey",   keywords:["turkey","turkeys"] },
-  { id:"riblets",  keywords:["riblet","riblets"] },
-  { id:"ham",      keywords:["ham","hams"] },
-  { id:"gyro",     keywords:["gyro cone","gyro cones","gyro","gyros","cone","cones"] },
-  { id:"sausage",  keywords:["regular sausage","reg sausage","sausage link","sausage links","sausage","sausages","link","links"] },
-  { id:"jalapeno", keywords:["jalapeno sausage","jalapeño sausage","jalapeno","jalapeño","jalapenos","jalapeños","spicy sausage","hot link","hot links","hot sausage"] }
+  { id:"brisket",   keywords:["brisket","briskets"] },
+  { id:"ribs",      keywords:["beef rib","beef ribs","rib rack","rib racks"] },
+  { id:"pork_ribs", keywords:["pork rib","pork ribs","pork rib slab","pork rib slabs"] },
+  { id:"chicken",   keywords:["chicken","chickens","hen","hens"] },
+  { id:"pork",      keywords:["pork","butt","shoulder","pig"] },
+  { id:"turkey",    keywords:["turkey","turkeys"] },
+  { id:"riblets",   keywords:["riblet","riblets"] },
+  { id:"ham",       keywords:["ham","hams"] },
+  { id:"gyro",      keywords:["gyro cone","gyro cones","gyro","gyros","cone","cones"] },
+  { id:"sausage",   keywords:["regular sausage","reg sausage","sausage link","sausage links","sausage","sausages","link","links"] },
+  { id:"jalapeno",  keywords:["jalapeno sausage","jalapeño sausage","jalapeno","jalapeño","spicy sausage","hot link","hot links"] }
 ];
 
 const WORD_NUMS = {
@@ -391,12 +403,11 @@ let todayCount = 0;
 let recognition = null;
 let isListening = false;
 
-// ── Voice ──
 function initVoice() {
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (!SR) {
     document.getElementById("voice-btn").classList.add("nosupport");
-    document.getElementById("voice-label").textContent = "Voice Not Supported on This Browser";
+    document.getElementById("voice-label").textContent = "Voice Input Not Supported";
     return false;
   }
   recognition = new SR();
@@ -413,7 +424,7 @@ function initVoice() {
   };
   recognition.onerror = e => {
     stopListening(false);
-    if (e.error === "not-allowed") showToast("Tap Allow when Chrome asks for mic access", true);
+    if (e.error === "not-allowed") showToast("Tap Allow when Chrome asks for mic", true);
     else if (e.error === "no-speech") showToast("No speech detected — try again", true);
     else showToast("Voice error: " + e.error, true);
   };
@@ -486,17 +497,18 @@ function parseVoice(transcript) {
   else showToast("✅ Filled " + matched + " item" + (matched > 1 ? "s" : "") + " — review & log!", false);
 }
 
-// ── Controls ──
 function selectPortion(p) {
   hamPortion = p.charAt(0).toUpperCase() + p.slice(1);
   ["whole","half","quarter"].forEach(x => document.getElementById("ham-"+x).classList.toggle("selected", x===p));
   highlight("ham");
 }
+
 function adj(id, delta) {
   const el = document.getElementById("qty-"+id);
   el.value = Math.max(0, (parseInt(el.value)||0) + delta);
   highlight(id);
 }
+
 function highlight(id) {
   const el  = document.getElementById("qty-"+id);
   const row = document.getElementById("row-"+id);
@@ -504,10 +516,12 @@ function highlight(id) {
   row.classList.remove("voice-set");
   row.classList.toggle("has-qty", v > 0);
 }
+
 function getVal(id) {
   const el = document.getElementById("qty-"+id);
   return id === "riblets" ? (parseFloat(el.value)||0) : (parseInt(el.value)||0);
 }
+
 function resetAll() {
   ITEMS.forEach(item => {
     const el = document.getElementById("qty-"+item.id);
@@ -520,7 +534,6 @@ function resetAll() {
   selectPortion("whole");
 }
 
-// ── Submit via fetch to Apps Script ──
 function submitAll() {
   const cook  = document.getElementById("cook-select").value;
   const notes = document.getElementById("notes-input").value;
@@ -549,14 +562,13 @@ function submitAll() {
     showToast("✅ " + entries.length + " item" + (entries.length > 1 ? "s" : "") + " logged!");
     resetAll();
   })
-  .catch(err => {
+  .catch(() => {
     btn.disabled = false;
     btn.textContent = "✅ LOG IT";
     showToast("Error saving — check connection", true);
   });
 }
 
-// ── Totals via fetch ──
 function loadTotals() {
   document.getElementById("totals-body").innerHTML = '<div class="total-row"><span style="color:var(--muted)">Loading...</span></div>';
   fetch(SCRIPT_URL + "?action=getTodayTotals")
@@ -582,7 +594,7 @@ function loadTotals() {
       if (!any) body.innerHTML = '<div class="total-row"><span style="color:var(--muted)">No entries yet today</span></div>';
     })
     .catch(() => {
-      document.getElementById("totals-body").innerHTML = '<div class="total-row"><span style="color:var(--ember)">Error loading — tap refresh</span></div>';
+      document.getElementById("totals-body").innerHTML = '<div class="total-row"><span style="color:var(--ember)">Error — tap refresh</span></div>';
     });
 }
 
@@ -592,17 +604,20 @@ function showTab(tab) {
   document.querySelectorAll("nav a").forEach((a,i) => a.classList.toggle("active",(tab==="log"&&i===0)||(tab==="totals"&&i===1)));
   if (tab==="totals") loadTotals();
 }
+
 function showToast(msg, isError) {
   const t = document.getElementById("toast");
   t.textContent = msg;
   t.className = "toast show" + (isError?" error":"");
   setTimeout(() => t.className = "toast", 2800);
 }
+
 function updateClock() {
   const now = new Date();
   document.getElementById("header-time").textContent = now.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"});
   document.getElementById("date-display").textContent = now.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"});
 }
+
 updateClock();
 setInterval(updateClock, 30000);
 initVoice();
