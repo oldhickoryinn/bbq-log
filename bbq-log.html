@@ -18,27 +18,38 @@
   header .sub { font-size: 12px; color: #aaa; margin-top: 2px; }
   .date-bar { background: var(--bark); color: #fff; padding: 0.5rem 1.25rem; font-size: 13px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
   nav { display: flex; background: var(--smoke); border-top: 1px solid #333; }
-  nav a { flex: 1; text-align: center; padding: 0.6rem; font-size: 12px; color: #aaa; text-decoration: none; font-weight: 600; border-bottom: 3px solid transparent; cursor: pointer; }
+  nav a { flex: 1; text-align: center; padding: 0.55rem 0.25rem; font-size: 11px; color: #aaa; text-decoration: none; font-weight: 600; border-bottom: 3px solid transparent; cursor: pointer; }
   nav a.active { color: var(--amber); border-bottom-color: var(--amber); }
+  .reminder-banner { background: #fff3cd; border-bottom: 2px solid #e67e22; padding: 0.75rem 1rem; display: none; align-items: center; gap: 10px; }
+  .reminder-banner.show { display: flex; }
+  .reminder-banner .text { flex: 1; font-size: 13px; color: #7a4f00; font-weight: 600; }
+  .reminder-banner button { background: var(--amber); color: #fff; border: none; border-radius: 6px; padding: 0.4rem 0.8rem; font-size: 12px; font-weight: 700; cursor: pointer; white-space: nowrap; }
   .cook-row { padding: 0.75rem 1rem 0.5rem; }
   .cook-select { width: 100%; padding: 0.7rem 0.9rem; border: 1.5px solid var(--border); border-radius: 8px; font-size: 15px; background: #fff; color: var(--text); font-weight: 600; }
   .voice-wrap { margin: 0 1rem 0.75rem; }
   .voice-btn { width: 100%; padding: 0.85rem 1rem; background: var(--smoke); color: #fff; border: none; border-radius: var(--radius); font-size: 15px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
   .voice-btn.listening { background: var(--ember); animation: vpulse 1s infinite; }
   .voice-btn.success   { background: var(--green); }
-  .voice-btn.nosupport { background: #666; cursor: not-allowed; }
+  .voice-btn.nosupport { background: #555; cursor: not-allowed; }
   @keyframes vpulse { 0%,100%{opacity:1} 50%{opacity:0.65} }
   .voice-hint { font-size: 11px; color: var(--muted); text-align: center; margin-top: 6px; line-height: 1.5; }
   .voice-transcript { margin-top: 7px; padding: 0.6rem 0.9rem; background: #fff; border: 1.5px solid var(--border); border-radius: 8px; font-size: 13px; color: var(--text); font-style: italic; display: none; }
   .voice-transcript.show { display: block; }
   .section-title { font-size: 11px; font-weight: 700; color: var(--bark); text-transform: uppercase; letter-spacing: 1px; padding: 0.6rem 1rem 0.35rem; }
-  .item-row { background: #fff; border: 1.5px solid var(--border); margin: 0 1rem 8px; border-radius: var(--radius); padding: 0.7rem 1rem; display: flex; align-items: center; gap: 12px; transition: border-color 0.2s, background 0.2s; }
-  .item-icon { width: 48px; height: 48px; flex-shrink: 0; }
+  .item-row { background: #fff; border: 1.5px solid var(--border); margin: 0 1rem 8px; border-radius: var(--radius); padding: 0.65rem 1rem; display: flex; align-items: center; gap: 12px; transition: border-color 0.2s, background 0.2s; }
+  .item-row.has-qty { border-color: var(--bark); background: #fffaf5; }
+  .item-row.voice-set { border-color: var(--green); background: #f2fbf4; }
+  .item-icon { width: 46px; height: 46px; flex-shrink: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+  .icon-svg  { width: 46px; height: 46px; flex-shrink: 0; }
+  .ic-cream  { background: #F5EDE0; }
+  .ic-red    { background: #FAECE7; }
+  .ic-yellow { background: #FEF9E7; }
+  .ic-pink   { background: #FBEAF0; }
+  .ic-teal   { background: #E1F5EE; }
+  .ic-green  { background: #EAF3DE; }
   .item-info { flex: 1; min-width: 0; }
   .item-info .name { font-size: 15px; font-weight: 700; }
   .item-info .meta { font-size: 11px; color: var(--muted); margin-top: 1px; }
-  .item-row.has-qty   { border-color: var(--bark); background: #fffaf5; }
-  .item-row.voice-set { border-color: var(--green); background: #f2fbf4; }
   .portion-wrap { display: flex; gap: 5px; margin-top: 5px; }
   .portion-btn { padding: 3px 9px; border: 1.5px solid var(--border); border-radius: 6px; font-size: 12px; font-weight: 600; background: var(--cream); cursor: pointer; }
   .portion-btn.selected { border-color: var(--bark); background: var(--light); color: var(--bark); }
@@ -62,6 +73,12 @@
   .total-zero { color: #ccc; }
   .refresh-btn { width: 100%; margin-top: 12px; padding: 0.75rem; background: #fff; border: 1.5px solid var(--border); border-radius: var(--radius); font-size: 14px; font-weight: 700; cursor: pointer; color: var(--bark); }
   .inv-btn { display: block; text-align: center; margin: 0.75rem 1rem 1.5rem; padding: 0.85rem; background: var(--smoke); color: var(--amber); border-radius: var(--radius); font-size: 14px; font-weight: 700; text-decoration: none; cursor: pointer; border: none; width: calc(100% - 2rem); }
+  .eod-header { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); margin: 0.75rem 1rem 0.5rem; padding: 1rem; }
+  .eod-header h2 { font-size: 16px; font-weight: 700; color: var(--bark); margin-bottom: 4px; }
+  .eod-header p  { font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .eod-log-btn { position: sticky; bottom: 0; z-index: 50; width: 100%; padding: 1.05rem; background: #2c3e50; color: #fff; border: none; font-size: 18px; font-weight: 800; cursor: pointer; letter-spacing: 0.3px; box-shadow: 0 -2px 12px rgba(0,0,0,0.15); }
+  .eod-log-btn:active { background: var(--smoke); }
+  .eod-log-btn:disabled { background: var(--muted); }
   .toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: var(--green); color: #fff; padding: 0.75rem 1.5rem; border-radius: 50px; font-size: 15px; font-weight: 700; opacity: 0; transition: opacity 0.3s; pointer-events: none; white-space: nowrap; box-shadow: 0 4px 16px rgba(0,0,0,0.2); z-index: 200; }
   .toast.show { opacity: 1; }
   .toast.error { background: var(--ember); }
@@ -79,8 +96,14 @@
 </div>
 <nav>
   <a class="active" onclick="showTab('log')">📋 Log Entry</a>
-  <a onclick="showTab('totals')">📊 Today's Totals</a>
+  <a onclick="showTab('totals')">📊 Totals</a>
+  <a onclick="showTab('eod')">🌙 End of Day</a>
 </nav>
+
+<div class="reminder-banner" id="reminder-banner">
+  <span class="text" id="reminder-text">⚠️ Last night's closing count is missing!</span>
+  <button onclick="showTab('eod')">Enter Now</button>
+</div>
 
 <div id="tab-log">
   <div class="cook-row">
@@ -95,7 +118,6 @@
       <option>New Cook 2</option>
     </select>
   </div>
-
   <div class="voice-wrap">
     <button class="voice-btn" id="voice-btn" onclick="startVoice()">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -106,24 +128,14 @@
       </svg>
       <span id="voice-label">🎤 Tap to Speak Your Order</span>
     </button>
-    <div class="voice-hint">Say items and quantities — <em>"5 brisket, 22 chicken, 10 pork ribs, 10 sausage"</em></div>
+    <div class="voice-hint">Say items and quantities — <em>"5 brisket, 22 chicken, 10 pork ribs"</em></div>
     <div class="voice-transcript" id="voice-transcript"></div>
   </div>
 
   <div class="section-title">🥩 Whole Meats</div>
 
   <div class="item-row" id="row-brisket">
-    <svg class="item-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="24" cy="30" rx="20" ry="10" fill="#6B1A00"/>
-      <ellipse cx="24" cy="28" rx="20" ry="10" fill="#8B2500"/>
-      <ellipse cx="24" cy="26" rx="20" ry="10" fill="#A83010"/>
-      <ellipse cx="24" cy="13" rx="20" ry="5"  fill="#F0DEB0"/>
-      <ellipse cx="24" cy="12" rx="20" ry="4"  fill="#FAF0D8"/>
-      <ellipse cx="24" cy="26" rx="16" ry="7"  fill="none" stroke="#4A0800" stroke-width="1.2" opacity="0.4"/>
-      <line x1="9" y1="21" x2="39" y2="21" stroke="#6A1000" stroke-width="0.9" opacity="0.45"/>
-      <line x1="9" y1="24" x2="39" y2="24" stroke="#6A1000" stroke-width="0.9" opacity="0.45"/>
-      <line x1="9" y1="27" x2="39" y2="27" stroke="#6A1000" stroke-width="0.9" opacity="0.4"/>
-    </svg>
+    <div class="item-icon ic-cream">🐄</div>
     <div class="item-info"><div class="name">Brisket</div><div class="meta">whole</div></div>
     <div class="counter">
       <div class="qty-btn" onclick="adj('brisket',-1)">−</div>
@@ -133,17 +145,7 @@
   </div>
 
   <div class="item-row" id="row-ribs">
-    <svg class="item-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-      <rect x="4"  y="24" width="40" height="15" rx="3" fill="#8B2800"/>
-      <rect x="4"  y="22" width="40" height="13" rx="3" fill="#B03A10"/>
-      <rect x="4"  y="21" width="40" height="11" rx="3" fill="#C84420"/>
-      <rect x="7"  y="7"  width="5" height="17" rx="2.5" fill="#F0EAD8"/>
-      <rect x="14" y="5"  width="5" height="19" rx="2.5" fill="#FAF4E0"/>
-      <rect x="21" y="6"  width="5" height="18" rx="2.5" fill="#F0EAD8"/>
-      <rect x="28" y="5"  width="5" height="19" rx="2.5" fill="#FAF4E0"/>
-      <rect x="35" y="7"  width="5" height="17" rx="2.5" fill="#F0EAD8"/>
-      <rect x="4"  y="21" width="40" height="4"  rx="2" fill="#501000" opacity="0.25"/>
-    </svg>
+    <div class="item-icon ic-red">🍖</div>
     <div class="item-info"><div class="name">Beef Ribs</div><div class="meta">racks</div></div>
     <div class="counter">
       <div class="qty-btn" onclick="adj('ribs',-1)">−</div>
@@ -153,17 +155,18 @@
   </div>
 
   <div class="item-row" id="row-pork_ribs">
-    <svg class="item-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-      <rect x="4"  y="24" width="40" height="15" rx="3" fill="#7A3010"/>
-      <rect x="4"  y="22" width="40" height="13" rx="3" fill="#9A4820"/>
-      <rect x="4"  y="21" width="40" height="11" rx="3" fill="#B85A28"/>
-      <rect x="7"  y="7"  width="5" height="17" rx="2.5" fill="#EEE4D0"/>
-      <rect x="14" y="5"  width="5" height="19" rx="2.5" fill="#F8EED8"/>
-      <rect x="21" y="6"  width="5" height="18" rx="2.5" fill="#EEE4D0"/>
-      <rect x="28" y="5"  width="5" height="19" rx="2.5" fill="#F8EED8"/>
-      <rect x="35" y="7"  width="5" height="17" rx="2.5" fill="#EEE4D0"/>
-      <rect x="4"  y="21" width="40" height="4"  rx="2" fill="#3A0800" opacity="0.25"/>
-      <rect x="6"  y="22" width="34" height="2"  rx="1" fill="#E8804A" opacity="0.3"/>
+    <svg class="icon-svg" viewBox="0 0 46 46">
+      <rect width="46" height="46" rx="23" fill="#FAEEDA"/>
+      <rect x="4" y="24" width="38" height="12" rx="3" fill="#7A3010"/>
+      <rect x="4" y="22" width="38" height="10" rx="3" fill="#9A4820"/>
+      <rect x="4" y="21" width="38" height="9"  rx="3" fill="#B85A28"/>
+      <rect x="6"  y="8"  width="4" height="15" rx="2" fill="#EEE4D0"/>
+      <rect x="13" y="6"  width="4" height="17" rx="2" fill="#F8EED8"/>
+      <rect x="20" y="7"  width="4" height="16" rx="2" fill="#EEE4D0"/>
+      <rect x="27" y="6"  width="4" height="17" rx="2" fill="#F8EED8"/>
+      <rect x="34" y="8"  width="4" height="15" rx="2" fill="#EEE4D0"/>
+      <rect x="5"  y="21" width="36" height="3" rx="1" fill="#3A0800" opacity="0.2"/>
+      <rect x="7"  y="22" width="30" height="2" rx="1" fill="#E8804A" opacity="0.3"/>
     </svg>
     <div class="item-info"><div class="name">Pork Ribs</div><div class="meta">slabs · 12/case</div></div>
     <div class="counter">
@@ -174,16 +177,7 @@
   </div>
 
   <div class="item-row" id="row-chicken">
-    <svg class="item-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="23" cy="28" rx="17" ry="13" fill="#B06820"/>
-      <ellipse cx="22" cy="26" rx="16" ry="12" fill="#C87828"/>
-      <ellipse cx="21" cy="24" rx="15" ry="11" fill="#E09030"/>
-      <ellipse cx="19" cy="21" rx="9"  ry="6"  fill="#F0A840" opacity="0.75"/>
-      <ellipse cx="17" cy="19" rx="5"  ry="3"  fill="#FCC040" opacity="0.55"/>
-      <ellipse cx="35" cy="34" rx="4"  ry="6"  fill="#C07828"/>
-      <circle  cx="35" cy="39" r="3.2" fill="#F4E4B8"/>
-      <ellipse cx="9"  cy="29" rx="6"  ry="4"  fill="#B06820" transform="rotate(-20 9 29)"/>
-    </svg>
+    <div class="item-icon ic-yellow">🐔</div>
     <div class="item-info"><div class="name">Chicken</div><div class="meta">halves</div></div>
     <div class="counter">
       <div class="qty-btn" onclick="adj('chicken',-1)">−</div>
@@ -193,15 +187,7 @@
   </div>
 
   <div class="item-row" id="row-pork">
-    <svg class="item-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="24" cy="29" rx="19" ry="13" fill="#7A2A08"/>
-      <ellipse cx="23" cy="27" rx="18" ry="12" fill="#A03C18"/>
-      <ellipse cx="23" cy="19" rx="16" ry="7"  fill="#4A1200"/>
-      <ellipse cx="22" cy="18" rx="14" ry="5.5" fill="#6A1C00"/>
-      <path d="M9 24 Q14 20 19 24 Q24 28 29 24 Q34 20 40 24" stroke="#C06030" stroke-width="1.5" fill="none" opacity="0.55"/>
-      <path d="M10 27 Q15 23 20 27 Q25 31 30 27 Q35 23 40 27" stroke="#C06030" stroke-width="1.4" fill="none" opacity="0.45"/>
-      <ellipse cx="19" cy="16" rx="7" ry="3" fill="#F0D8A0" opacity="0.35"/>
-    </svg>
+    <div class="item-icon ic-pink">🐷</div>
     <div class="item-info"><div class="name">Pork</div><div class="meta">whole</div></div>
     <div class="counter">
       <div class="qty-btn" onclick="adj('pork',-1)">−</div>
@@ -211,15 +197,7 @@
   </div>
 
   <div class="item-row" id="row-turkey">
-    <svg class="item-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="24" cy="29" rx="17" ry="13" fill="#A86020"/>
-      <ellipse cx="23" cy="27" rx="16" ry="12" fill="#C07828"/>
-      <ellipse cx="23" cy="21" rx="14" ry="8"  fill="#D89030"/>
-      <ellipse cx="21" cy="19" rx="10" ry="5.5" fill="#ECA838" opacity="0.8"/>
-      <ellipse cx="18" cy="17" rx="5"  ry="2.5" fill="#F8C848" opacity="0.5"/>
-      <ellipse cx="37" cy="33" rx="4" ry="6"   fill="#B87020"/>
-      <circle  cx="37" cy="38" r="3.2" fill="#EEE0A8"/>
-    </svg>
+    <div class="item-icon ic-yellow">🦃</div>
     <div class="item-info"><div class="name">Turkey</div><div class="meta">whole</div></div>
     <div class="counter">
       <div class="qty-btn" onclick="adj('turkey',-1)">−</div>
@@ -231,15 +209,16 @@
   <div class="section-title">⚖️ By Weight</div>
 
   <div class="item-row" id="row-riblets">
-    <svg class="item-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-      <rect x="5"  y="26" width="14" height="8" rx="4" fill="#8A2C08" transform="rotate(-14 12 30)"/>
-      <rect x="28" y="24" width="14" height="8" rx="4" fill="#8A2C08" transform="rotate(11 35 28)"/>
-      <rect x="9"  y="21" width="13" height="8" rx="4" fill="#B03C10" transform="rotate(-5 15 25)"/>
-      <rect x="25" y="20" width="13" height="8" rx="4" fill="#B03C10" transform="rotate(7 31 24)"/>
-      <rect x="15" y="26" width="17" height="9" rx="4.5" fill="#C84820"/>
-      <circle cx="11" cy="21" r="2.5" fill="#EEE5CC" opacity="0.9"/>
-      <circle cx="22" cy="18" r="2.5" fill="#EEE5CC" opacity="0.9"/>
-      <circle cx="33" cy="20" r="2.5" fill="#EEE5CC" opacity="0.9"/>
+    <svg class="icon-svg" viewBox="0 0 46 46">
+      <rect width="46" height="46" rx="23" fill="#F5EDE0"/>
+      <rect x="4"  y="26" width="13" height="7" rx="3.5" fill="#8A2C08" transform="rotate(-14 10 29)"/>
+      <rect x="27" y="24" width="13" height="7" rx="3.5" fill="#8A2C08" transform="rotate(11 33 27)"/>
+      <rect x="8"  y="21" width="12" height="7" rx="3.5" fill="#B03C10" transform="rotate(-5 14 24)"/>
+      <rect x="24" y="20" width="12" height="7" rx="3.5" fill="#B03C10" transform="rotate(7 30 23)"/>
+      <rect x="14" y="26" width="16" height="8" rx="4" fill="#C84820"/>
+      <circle cx="10" cy="21" r="2.2" fill="#EEE5CC"/>
+      <circle cx="21" cy="18" r="2.2" fill="#EEE5CC"/>
+      <circle cx="32" cy="20" r="2.2" fill="#EEE5CC"/>
     </svg>
     <div class="item-info"><div class="name">Riblets</div><div class="meta">lbs</div></div>
     <div class="counter">
@@ -250,17 +229,16 @@
   <div class="section-title">🍖 Ham</div>
 
   <div class="item-row" id="row-ham">
-    <svg class="item-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="21" cy="27" rx="16" ry="14" fill="#AA2C20"/>
-      <ellipse cx="20" cy="25" rx="15" ry="13" fill="#C03830"/>
-      <ellipse cx="20" cy="23" rx="13" ry="11" fill="#D85040"/>
-      <ellipse cx="18" cy="20" rx="8"  ry="5"  fill="#E87050" opacity="0.7"/>
-      <line x1="11" y1="16" x2="29" y2="28" stroke="#8A1818" stroke-width="1" opacity="0.35"/>
-      <line x1="16" y1="14" x2="34" y2="26" stroke="#8A1818" stroke-width="1" opacity="0.3"/>
-      <line x1="9"  y1="22" x2="29" y2="33" stroke="#8A1818" stroke-width="1" opacity="0.32"/>
-      <rect x="34" y="20" width="9" height="7" rx="3.5" fill="#F0E4C8"/>
-      <circle cx="43" cy="23" r="3.5" fill="#F8EDD5"/>
-      <circle cx="35" cy="23" r="3"   fill="#F8EDD5"/>
+    <svg class="icon-svg" viewBox="0 0 46 46">
+      <rect width="46" height="46" rx="23" fill="#FAECE7"/>
+      <ellipse cx="20" cy="27" rx="15" ry="13" fill="#AA2C20"/>
+      <ellipse cx="19" cy="25" rx="14" ry="12" fill="#C03830"/>
+      <ellipse cx="19" cy="23" rx="12" ry="10" fill="#D85040"/>
+      <ellipse cx="17" cy="20" rx="7"  ry="4.5" fill="#E87050" opacity="0.7"/>
+      <line x1="10" y1="16" x2="27" y2="27" stroke="#8A1818" stroke-width="0.9" opacity="0.35"/>
+      <line x1="15" y1="14" x2="32" y2="25" stroke="#8A1818" stroke-width="0.9" opacity="0.3"/>
+      <rect x="33" y="20" width="8" height="6" rx="3" fill="#F0E4C8"/>
+      <circle cx="41" cy="23" r="3" fill="#F8EDD5"/>
     </svg>
     <div class="item-info">
       <div class="name">Ham</div>
@@ -280,17 +258,7 @@
   <div class="section-title">🌀 Gyro & Sausage</div>
 
   <div class="item-row" id="row-gyro">
-    <svg class="item-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="24" cy="39" rx="12" ry="4"   fill="#4A2800" opacity="0.25"/>
-      <ellipse cx="24" cy="37" rx="11" ry="3.8" fill="#7A2C08"/>
-      <ellipse cx="24" cy="33" rx="10" ry="3.5" fill="#943A14"/>
-      <ellipse cx="24" cy="29" rx="9"  ry="3.2" fill="#AC4820"/>
-      <ellipse cx="24" cy="25" rx="8"  ry="3"   fill="#C05828"/>
-      <ellipse cx="24" cy="21" rx="7"  ry="2.8" fill="#CE6830"/>
-      <ellipse cx="24" cy="17" rx="5"  ry="2.4" fill="#BC5420"/>
-      <ellipse cx="24" cy="14" rx="3.5" ry="2"  fill="#9A3A10"/>
-      <rect x="23" y="9" width="2" height="30" rx="1" fill="#B89840" opacity="0.45"/>
-    </svg>
+    <div class="item-icon ic-teal">🌀</div>
     <div class="item-info"><div class="name">Gyro Cone</div><div class="meta">cones</div></div>
     <div class="counter">
       <div class="qty-btn" onclick="adj('gyro',-1)">−</div>
@@ -300,15 +268,16 @@
   </div>
 
   <div class="item-row" id="row-sausage">
-    <svg class="item-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-      <rect x="5"  y="17" width="38" height="19" rx="9.5" fill="#7A1C08"/>
-      <rect x="5"  y="15" width="38" height="19" rx="9.5" fill="#9C2C14"/>
-      <rect x="5"  y="14" width="38" height="17" rx="8.5" fill="#B83820"/>
-      <ellipse cx="22" cy="17" rx="12" ry="4"   fill="#CE5030" opacity="0.65"/>
-      <ellipse cx="7"  cy="22" rx="4.5" ry="8"  fill="#A82C18"/>
-      <ellipse cx="41" cy="22" rx="4.5" ry="8"  fill="#A82C18"/>
-      <path d="M15 14 Q17 20 15 27" stroke="#5C0E00" stroke-width="2"   fill="none" opacity="0.42"/>
-      <path d="M25 14 Q27 20 25 27" stroke="#5C0E00" stroke-width="1.8" fill="none" opacity="0.35"/>
+    <svg class="icon-svg" viewBox="0 0 46 46">
+      <rect width="46" height="46" rx="23" fill="#F5EDE0"/>
+      <rect x="4"  y="16" width="38" height="17" rx="8.5" fill="#7A1C08"/>
+      <rect x="4"  y="14" width="38" height="17" rx="8.5" fill="#9C2C14"/>
+      <rect x="4"  y="13" width="38" height="16" rx="8"   fill="#B83820"/>
+      <ellipse cx="21" cy="16" rx="11" ry="3.5" fill="#CE5030" opacity="0.6"/>
+      <ellipse cx="6"  cy="21" rx="4"  ry="7.5" fill="#A82C18"/>
+      <ellipse cx="40" cy="21" rx="4"  ry="7.5" fill="#A82C18"/>
+      <path d="M14 13 Q16 19 14 26" stroke="#5C0E00" stroke-width="1.8" fill="none" opacity="0.4"/>
+      <path d="M24 13 Q26 19 24 26" stroke="#5C0E00" stroke-width="1.6" fill="none" opacity="0.35"/>
     </svg>
     <div class="item-info"><div class="name">Reg. Sausage</div><div class="meta">links · 1 lb ea</div></div>
     <div class="counter">
@@ -319,16 +288,7 @@
   </div>
 
   <div class="item-row" id="row-jalapeno">
-    <svg class="item-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-      <rect x="3"  y="21" width="30" height="15" rx="7.5" fill="#7A1C08"/>
-      <rect x="3"  y="19" width="30" height="15" rx="7.5" fill="#9C2C14"/>
-      <rect x="3"  y="18" width="30" height="14" rx="7"   fill="#B83820"/>
-      <ellipse cx="16" cy="21" rx="9" ry="3.5"  fill="#CE5030" opacity="0.6"/>
-      <path d="M33 9 Q41 13 43 21 Q44 27 39 31 Q36 33 34 29 Q31 23 32 15 Z" fill="#246824"/>
-      <path d="M34 9 Q42 13 43 21 Q44 26 40 30 Q37 27 35 21 Q33 15 34 9 Z"  fill="#2E8A2E"/>
-      <path d="M35 10 Q40 14 41 21 Q40 25 38 27 Q36 23 35 17 Q34 13 35 10 Z" fill="#46AA46" opacity="0.65"/>
-      <path d="M33 9 Q31 5 32 3" stroke="#1A4A10" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-    </svg>
+    <div class="item-icon ic-green">🌶️</div>
     <div class="item-info"><div class="name">Jalapeño Sausage</div><div class="meta">pieces · ¼ lb ea</div></div>
     <div class="counter">
       <div class="qty-btn" onclick="adj('jalapeno',-1)">−</div>
@@ -356,11 +316,160 @@
   <button class="inv-btn" onclick="window.open('https://script.google.com/macros/s/AKfycbxeYHKYVZO_aLoHH0tOTGhubausZW81Kp48Z7-XF_iEobZhznCkBUumg3_WnJosDCP0/exec?page=inventory','_blank')">📦 Weekly Inventory Count →</button>
 </div>
 
+<div id="tab-eod" style="display:none;">
+  <div class="eod-header">
+    <h2>🌙 End of Day — Closing Count</h2>
+    <p>Enter how much cooked meat is left at close. This calculates what was sold today.</p>
+  </div>
+  <div class="cook-row">
+    <select class="cook-select" id="eod-cook-select">
+      <option value="">👤 Select Cook / Manager (required)</option>
+      <option>Efrain</option>
+      <option>Adan</option>
+      <option>Lorenzo</option>
+      <option>Aris</option>
+      <option>Ted</option>
+      <option>New Cook 1</option>
+      <option>New Cook 2</option>
+    </select>
+  </div>
+
+  <div class="section-title">🥩 Whole Meats Left at Close</div>
+
+  <div class="item-row"><div class="item-icon ic-cream">🐄</div>
+    <div class="item-info"><div class="name">Brisket</div><div class="meta">whole remaining</div></div>
+    <div class="counter"><div class="qty-btn" onclick="eodAdj('brisket',-1)">−</div>
+    <input class="qty-input" type="number" id="eod-brisket" value="0" min="0" inputmode="numeric">
+    <div class="qty-btn" onclick="eodAdj('brisket',1)">+</div></div>
+  </div>
+
+  <div class="item-row"><div class="item-icon ic-red">🍖</div>
+    <div class="item-info"><div class="name">Beef Ribs</div><div class="meta">racks remaining</div></div>
+    <div class="counter"><div class="qty-btn" onclick="eodAdj('ribs',-1)">−</div>
+    <input class="qty-input" type="number" id="eod-ribs" value="0" min="0" inputmode="numeric">
+    <div class="qty-btn" onclick="eodAdj('ribs',1)">+</div></div>
+  </div>
+
+  <div class="item-row">
+    <svg class="icon-svg" viewBox="0 0 46 46"><rect width="46" height="46" rx="23" fill="#FAEEDA"/>
+      <rect x="4" y="24" width="38" height="12" rx="3" fill="#7A3010"/>
+      <rect x="4" y="22" width="38" height="10" rx="3" fill="#9A4820"/>
+      <rect x="4" y="21" width="38" height="9" rx="3" fill="#B85A28"/>
+      <rect x="6" y="8" width="4" height="15" rx="2" fill="#EEE4D0"/>
+      <rect x="13" y="6" width="4" height="17" rx="2" fill="#F8EED8"/>
+      <rect x="20" y="7" width="4" height="16" rx="2" fill="#EEE4D0"/>
+      <rect x="27" y="6" width="4" height="17" rx="2" fill="#F8EED8"/>
+      <rect x="34" y="8" width="4" height="15" rx="2" fill="#EEE4D0"/>
+    </svg>
+    <div class="item-info"><div class="name">Pork Ribs</div><div class="meta">slabs remaining</div></div>
+    <div class="counter"><div class="qty-btn" onclick="eodAdj('pork_ribs',-1)">−</div>
+    <input class="qty-input" type="number" id="eod-pork_ribs" value="0" min="0" inputmode="numeric">
+    <div class="qty-btn" onclick="eodAdj('pork_ribs',1)">+</div></div>
+  </div>
+
+  <div class="item-row"><div class="item-icon ic-yellow">🐔</div>
+    <div class="item-info"><div class="name">Chicken</div><div class="meta">halves remaining</div></div>
+    <div class="counter"><div class="qty-btn" onclick="eodAdj('chicken',-1)">−</div>
+    <input class="qty-input" type="number" id="eod-chicken" value="0" min="0" inputmode="numeric">
+    <div class="qty-btn" onclick="eodAdj('chicken',1)">+</div></div>
+  </div>
+
+  <div class="item-row"><div class="item-icon ic-pink">🐷</div>
+    <div class="item-info"><div class="name">Pork</div><div class="meta">whole remaining</div></div>
+    <div class="counter"><div class="qty-btn" onclick="eodAdj('pork',-1)">−</div>
+    <input class="qty-input" type="number" id="eod-pork" value="0" min="0" inputmode="numeric">
+    <div class="qty-btn" onclick="eodAdj('pork',1)">+</div></div>
+  </div>
+
+  <div class="item-row"><div class="item-icon ic-yellow">🦃</div>
+    <div class="item-info"><div class="name">Turkey</div><div class="meta">whole remaining</div></div>
+    <div class="counter"><div class="qty-btn" onclick="eodAdj('turkey',-1)">−</div>
+    <input class="qty-input" type="number" id="eod-turkey" value="0" min="0" inputmode="numeric">
+    <div class="qty-btn" onclick="eodAdj('turkey',1)">+</div></div>
+  </div>
+
+  <div class="section-title">⚖️ By Weight</div>
+
+  <div class="item-row">
+    <svg class="icon-svg" viewBox="0 0 46 46"><rect width="46" height="46" rx="23" fill="#F5EDE0"/>
+      <rect x="4" y="26" width="13" height="7" rx="3.5" fill="#8A2C08" transform="rotate(-14 10 29)"/>
+      <rect x="27" y="24" width="13" height="7" rx="3.5" fill="#8A2C08" transform="rotate(11 33 27)"/>
+      <rect x="8" y="21" width="12" height="7" rx="3.5" fill="#B03C10" transform="rotate(-5 14 24)"/>
+      <rect x="24" y="20" width="12" height="7" rx="3.5" fill="#B03C10" transform="rotate(7 30 23)"/>
+      <rect x="14" y="26" width="16" height="8" rx="4" fill="#C84820"/>
+      <circle cx="10" cy="21" r="2.2" fill="#EEE5CC"/>
+      <circle cx="21" cy="18" r="2.2" fill="#EEE5CC"/>
+      <circle cx="32" cy="20" r="2.2" fill="#EEE5CC"/>
+    </svg>
+    <div class="item-info"><div class="name">Riblets</div><div class="meta">lbs remaining</div></div>
+    <div class="counter"><input class="weight-input" type="number" id="eod-riblets" value="" min="0" step="0.5" inputmode="decimal" placeholder="0 lbs"></div>
+  </div>
+
+  <div class="section-title">🍖 Ham</div>
+
+  <div class="item-row">
+    <svg class="icon-svg" viewBox="0 0 46 46"><rect width="46" height="46" rx="23" fill="#FAECE7"/>
+      <ellipse cx="20" cy="27" rx="15" ry="13" fill="#AA2C20"/>
+      <ellipse cx="19" cy="25" rx="14" ry="12" fill="#C03830"/>
+      <ellipse cx="19" cy="23" rx="12" ry="10" fill="#D85040"/>
+      <ellipse cx="17" cy="20" rx="7" ry="4.5" fill="#E87050" opacity="0.7"/>
+      <rect x="33" y="20" width="8" height="6" rx="3" fill="#F0E4C8"/>
+      <circle cx="41" cy="23" r="3" fill="#F8EDD5"/>
+    </svg>
+    <div class="item-info">
+      <div class="name">Ham</div>
+      <div class="portion-wrap">
+        <div class="portion-btn selected" id="eod-ham-whole"   onclick="selectEodPortion('whole')">Whole</div>
+        <div class="portion-btn"          id="eod-ham-half"    onclick="selectEodPortion('half')">Half</div>
+        <div class="portion-btn"          id="eod-ham-quarter" onclick="selectEodPortion('quarter')">Quarter</div>
+      </div>
+    </div>
+    <div class="counter"><div class="qty-btn" onclick="eodAdj('ham',-1)">−</div>
+    <input class="qty-input" type="number" id="eod-ham" value="0" min="0" inputmode="numeric">
+    <div class="qty-btn" onclick="eodAdj('ham',1)">+</div></div>
+  </div>
+
+  <div class="section-title">🌀 Gyro & Sausage</div>
+
+  <div class="item-row"><div class="item-icon ic-teal">🌀</div>
+    <div class="item-info"><div class="name">Gyro Cone</div><div class="meta">cones remaining</div></div>
+    <div class="counter"><div class="qty-btn" onclick="eodAdj('gyro',-1)">−</div>
+    <input class="qty-input" type="number" id="eod-gyro" value="0" min="0" inputmode="numeric">
+    <div class="qty-btn" onclick="eodAdj('gyro',1)">+</div></div>
+  </div>
+
+  <div class="item-row">
+    <svg class="icon-svg" viewBox="0 0 46 46"><rect width="46" height="46" rx="23" fill="#F5EDE0"/>
+      <rect x="4" y="16" width="38" height="17" rx="8.5" fill="#B83820"/>
+      <ellipse cx="21" cy="16" rx="11" ry="3.5" fill="#CE5030" opacity="0.6"/>
+      <ellipse cx="6" cy="21" rx="4" ry="7.5" fill="#A82C18"/>
+      <ellipse cx="40" cy="21" rx="4" ry="7.5" fill="#A82C18"/>
+    </svg>
+    <div class="item-info"><div class="name">Reg. Sausage</div><div class="meta">links remaining</div></div>
+    <div class="counter"><div class="qty-btn" onclick="eodAdj('sausage',-1)">−</div>
+    <input class="qty-input" type="number" id="eod-sausage" value="0" min="0" inputmode="numeric">
+    <div class="qty-btn" onclick="eodAdj('sausage',1)">+</div></div>
+  </div>
+
+  <div class="item-row"><div class="item-icon ic-green">🌶️</div>
+    <div class="item-info"><div class="name">Jalapeño Sausage</div><div class="meta">pieces remaining</div></div>
+    <div class="counter"><div class="qty-btn" onclick="eodAdj('jalapeno',-1)">−</div>
+    <input class="qty-input" type="number" id="eod-jalapeno" value="0" min="0" inputmode="numeric">
+    <div class="qty-btn" onclick="eodAdj('jalapeno',1)">+</div></div>
+  </div>
+
+  <div class="section-title">📝 Notes (optional)</div>
+  <div class="notes-row">
+    <input class="notes-input" type="text" id="eod-notes" placeholder="e.g. ran out of chicken at 7pm...">
+  </div>
+  <div style="height:8px;"></div>
+  <button class="eod-log-btn" id="eod-btn" onclick="submitEod()">🌙 SUBMIT CLOSING COUNT</button>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxeYHKYVZO_aLoHH0tOTGhubausZW81Kp48Z7-XF_iEobZhznCkBUumg3_WnJosDCP0/exec";
-
 const ITEMS = [
   { id:"brisket",   label:"Brisket",         type:"count",   unit:"whole" },
   { id:"ribs",      label:"Beef Ribs",        type:"count",   unit:"rack" },
@@ -374,9 +483,9 @@ const ITEMS = [
   { id:"sausage",   label:"Reg. Sausage",     type:"count",   unit:"link",  weightEach:1 },
   { id:"jalapeno",  label:"Jalapeño Sausage", type:"count",   unit:"piece", weightEach:0.25 }
 ];
-
+const HAM_FRACTIONS = { "whole":1, "half":0.5, "quarter":0.25 };
 const VOICE_MAP = [
-  { id:"brisket",   keywords:["brisket","briskets"] },
+  { id:"brisket",   keywords:["brisket","briskets","cow"] },
   { id:"ribs",      keywords:["beef rib","beef ribs","rib rack","rib racks"] },
   { id:"pork_ribs", keywords:["pork rib","pork ribs","pork rib slab","pork rib slabs"] },
   { id:"chicken",   keywords:["chicken","chickens","hen","hens"] },
@@ -388,7 +497,6 @@ const VOICE_MAP = [
   { id:"sausage",   keywords:["regular sausage","reg sausage","sausage link","sausage links","sausage","sausages","link","links"] },
   { id:"jalapeno",  keywords:["jalapeno sausage","jalapeño sausage","jalapeno","jalapeño","spicy sausage","hot link","hot links"] }
 ];
-
 const WORD_NUMS = {
   "zero":0,"one":1,"two":2,"three":3,"four":4,"five":5,"six":6,"seven":7,"eight":8,"nine":9,
   "ten":10,"eleven":11,"twelve":12,"thirteen":13,"fourteen":14,"fifteen":15,
@@ -397,230 +505,197 @@ const WORD_NUMS = {
   "twenty six":26,"twenty seven":27,"twenty eight":28,"twenty nine":29,"thirty":30,
   "thirty five":35,"forty":40,"forty five":45,"fifty":50,"sixty":60,"seventy":70,"eighty":80,"ninety":90
 };
+let hamPortion="whole", eodHamPortion="whole", todayCount=0, recognition=null, isListening=false;
 
-let hamPortion = "Whole";
-let todayCount = 0;
-let recognition = null;
-let isListening = false;
+function checkReminder() {
+  fetch(SCRIPT_URL + "?action=checkMorningReminder")
+    .then(r => r.json())
+    .then(res => {
+      if (res.needsReminder) {
+        const d = new Date(res.missingDate + "T12:00:00");
+        const label = d.toLocaleDateString("en-US",{weekday:"long",month:"short",day:"numeric"});
+        document.getElementById("reminder-text").textContent = "⚠️ " + label + " closing count was not submitted — please enter it now";
+        document.getElementById("reminder-banner").classList.add("show");
+      }
+    }).catch(()=>{});
+}
 
 function initVoice() {
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!SR) {
-    document.getElementById("voice-btn").classList.add("nosupport");
-    document.getElementById("voice-label").textContent = "Voice Input Not Supported";
-    return false;
-  }
+  if (!SR) { document.getElementById("voice-btn").classList.add("nosupport"); document.getElementById("voice-label").textContent="Voice Not Supported"; return false; }
   recognition = new SR();
-  recognition.lang = "en-US";
-  recognition.continuous = false;
-  recognition.interimResults = false;
-  recognition.maxAlternatives = 3;
+  recognition.lang="en-US"; recognition.continuous=false; recognition.interimResults=false; recognition.maxAlternatives=3;
   recognition.onresult = e => {
     const text = e.results[0][0].transcript.toLowerCase().trim();
     document.getElementById("voice-transcript").textContent = "Heard: \"" + text + "\"";
     document.getElementById("voice-transcript").classList.add("show");
-    parseVoice(text);
-    stopListening(true);
+    parseVoice(text); stopListening(true);
   };
-  recognition.onerror = e => {
-    stopListening(false);
-    if (e.error === "not-allowed") showToast("Tap Allow when Chrome asks for mic", true);
-    else if (e.error === "no-speech") showToast("No speech detected — try again", true);
-    else showToast("Voice error: " + e.error, true);
-  };
-  recognition.onend = () => { if (isListening) stopListening(false); };
+  recognition.onerror = e => { stopListening(false); if(e.error==="not-allowed") showToast("Allow mic in browser settings",true); else if(e.error==="no-speech") showToast("No speech — try again",true); else showToast("Voice error: "+e.error,true); };
+  recognition.onend = () => { if(isListening) stopListening(false); };
   return true;
 }
-
 function startVoice() {
-  if (document.getElementById("voice-btn").classList.contains("nosupport")) return;
-  if (isListening) { recognition.stop(); stopListening(false); return; }
-  if (!recognition && !initVoice()) return;
-  isListening = true;
-  const btn = document.getElementById("voice-btn");
-  btn.classList.add("listening");
-  document.getElementById("voice-label").textContent = "🔴 Listening... Tap to Stop";
+  if(document.getElementById("voice-btn").classList.contains("nosupport")) return;
+  if(isListening){recognition.stop();stopListening(false);return;}
+  if(!recognition&&!initVoice()) return;
+  isListening=true;
+  document.getElementById("voice-btn").classList.add("listening");
+  document.getElementById("voice-label").textContent="🔴 Listening... Tap to Stop";
   document.getElementById("voice-transcript").classList.remove("show");
-  try { recognition.start(); } catch(e) { stopListening(false); }
+  try{recognition.start();}catch(e){stopListening(false);}
 }
-
 function stopListening(success) {
-  isListening = false;
-  const btn = document.getElementById("voice-btn");
-  btn.classList.remove("listening");
-  if (success) {
-    btn.classList.add("success");
-    document.getElementById("voice-label").textContent = "✅ Got It! Review & Hit LOG IT";
-    setTimeout(() => { btn.classList.remove("success"); document.getElementById("voice-label").textContent = "🎤 Tap to Speak Your Order"; }, 3500);
-  } else {
-    document.getElementById("voice-label").textContent = "🎤 Tap to Speak Your Order";
-  }
+  isListening=false;
+  document.getElementById("voice-btn").classList.remove("listening");
+  if(success){
+    document.getElementById("voice-btn").classList.add("success");
+    document.getElementById("voice-label").textContent="✅ Got It! Review & Hit LOG IT";
+    setTimeout(()=>{document.getElementById("voice-btn").classList.remove("success");document.getElementById("voice-label").textContent="🎤 Tap to Speak Your Order";},3500);
+  } else { document.getElementById("voice-label").textContent="🎤 Tap to Speak Your Order"; }
 }
-
 function parseVoice(transcript) {
-  let text = transcript;
-  Object.keys(WORD_NUMS).sort((a,b) => b.length - a.length).forEach(w => {
-    text = text.replace(new RegExp("\\b" + w + "\\b", "gi"), " " + WORD_NUMS[w] + " ");
-  });
-  text = text.replace(/\s+/g, " ").trim();
-  const parts = text.split(/[,;]|\band\b/);
-  let matched = 0;
-  parts.forEach(part => {
-    part = part.trim();
-    let qty = null, itemText = null;
-    let m = part.match(/^(\d+(?:\.\d+)?)\s+(.+)$/);
-    if (m) { qty = parseFloat(m[1]); itemText = m[2].trim(); }
-    else {
-      m = part.match(/^(.+?)\s+(\d+(?:\.\d+)?)$/);
-      if (m) { qty = parseFloat(m[2]); itemText = m[1].trim(); }
-    }
-    if (!qty || !itemText || qty <= 0) return;
-    let bestId = null, bestLen = 0;
-    VOICE_MAP.forEach(entry => {
-      entry.keywords.forEach(kw => {
-        if (itemText.includes(kw) && kw.length > bestLen) { bestId = entry.id; bestLen = kw.length; }
-      });
-    });
-    if (bestId) {
-      const input = document.getElementById("qty-" + bestId);
-      if (input) {
-        input.value = qty;
-        const row = document.getElementById("row-" + bestId);
-        row.classList.remove("has-qty");
-        row.classList.add("voice-set");
+  let text=transcript;
+  Object.keys(WORD_NUMS).sort((a,b)=>b.length-a.length).forEach(w=>{ text=text.replace(new RegExp("\\b"+w+"\\b","gi")," "+WORD_NUMS[w]+" "); });
+  text=text.replace(/\s+/g," ").trim();
+  const parts=text.split(/[,;]|\band\b/);
+  let matched=0;
+  parts.forEach(part=>{
+    part=part.trim();
+    let qty=null,itemText=null;
+    let m=part.match(/^(\d+(?:\.\d+)?)\s+(.+)$/);
+    if(m){qty=parseFloat(m[1]);itemText=m[2].trim();}
+    else{m=part.match(/^(.+?)\s+(\d+(?:\.\d+)?)$/);if(m){qty=parseFloat(m[2]);itemText=m[1].trim();}}
+    if(!qty||!itemText||qty<=0) return;
+    let bestId=null,bestLen=0;
+    VOICE_MAP.forEach(entry=>{entry.keywords.forEach(kw=>{if(itemText.includes(kw)&&kw.length>bestLen){bestId=entry.id;bestLen=kw.length;}});});
+    if(bestId){
+      const input=document.getElementById("qty-"+bestId);
+      if(input){
+        input.value=qty;
+        document.getElementById("row-"+bestId).classList.remove("has-qty");
+        document.getElementById("row-"+bestId).classList.add("voice-set");
         matched++;
-        if (matched === 1) setTimeout(() => row.scrollIntoView({ behavior:"smooth", block:"center" }), 300);
+        if(matched===1) setTimeout(()=>document.getElementById("row-"+bestId).scrollIntoView({behavior:"smooth",block:"center"}),300);
       }
     }
   });
-  if (matched === 0) showToast("Couldn't match items — try again", true);
-  else showToast("✅ Filled " + matched + " item" + (matched > 1 ? "s" : "") + " — review & log!", false);
+  if(matched===0) showToast("Couldn't match items — try again",true);
+  else showToast("✅ Filled "+matched+" item"+(matched>1?"s":"")+" — review & log!",false);
 }
 
-function selectPortion(p) {
-  hamPortion = p.charAt(0).toUpperCase() + p.slice(1);
-  ["whole","half","quarter"].forEach(x => document.getElementById("ham-"+x).classList.toggle("selected", x===p));
-  highlight("ham");
-}
-
-function adj(id, delta) {
-  const el = document.getElementById("qty-"+id);
-  el.value = Math.max(0, (parseInt(el.value)||0) + delta);
-  highlight(id);
-}
-
-function highlight(id) {
-  const el  = document.getElementById("qty-"+id);
-  const row = document.getElementById("row-"+id);
-  const v   = id === "riblets" ? parseFloat(el.value) : parseInt(el.value);
-  row.classList.remove("voice-set");
-  row.classList.toggle("has-qty", v > 0);
-}
-
-function getVal(id) {
-  const el = document.getElementById("qty-"+id);
-  return id === "riblets" ? (parseFloat(el.value)||0) : (parseInt(el.value)||0);
-}
-
-function resetAll() {
-  ITEMS.forEach(item => {
-    const el = document.getElementById("qty-"+item.id);
-    el.value = item.type === "weight" ? "" : 0;
-    document.getElementById("row-"+item.id).classList.remove("has-qty","voice-set");
-  });
-  document.getElementById("notes-input").value = "";
+function selectPortion(p){ hamPortion=p; ["whole","half","quarter"].forEach(x=>document.getElementById("ham-"+x).classList.toggle("selected",x===p)); highlight("ham"); }
+function selectEodPortion(p){ eodHamPortion=p; ["whole","half","quarter"].forEach(x=>document.getElementById("eod-ham-"+x).classList.toggle("selected",x===p)); }
+function adj(id,delta){ const el=document.getElementById("qty-"+id); el.value=Math.max(0,(parseInt(el.value)||0)+delta); highlight(id); }
+function eodAdj(id,delta){ const el=document.getElementById("eod-"+id); el.value=Math.max(0,(parseInt(el.value)||0)+delta); }
+function highlight(id){ const el=document.getElementById("qty-"+id); const row=document.getElementById("row-"+id); const v=id==="riblets"?parseFloat(el.value):parseInt(el.value); row.classList.remove("voice-set"); row.classList.toggle("has-qty",v>0); }
+function getVal(id){ const el=document.getElementById("qty-"+id); return id==="riblets"?(parseFloat(el.value)||0):(parseInt(el.value)||0); }
+function resetAll(){
+  ITEMS.forEach(item=>{const el=document.getElementById("qty-"+item.id);if(el)el.value=item.type==="weight"?"":0;const row=document.getElementById("row-"+item.id);if(row)row.classList.remove("has-qty","voice-set");});
+  document.getElementById("notes-input").value="";
   document.getElementById("voice-transcript").classList.remove("show");
-  hamPortion = "Whole";
-  selectPortion("whole");
+  hamPortion="whole"; selectPortion("whole");
 }
 
-function submitAll() {
-  const cook  = document.getElementById("cook-select").value;
-  const notes = document.getElementById("notes-input").value;
-  const entries = [];
-  ITEMS.forEach(item => {
-    const qty = getVal(item.id);
-    if (qty > 0) entries.push({ itemId:item.id, qty, portion:item.id==="ham"?hamPortion:"", cook, notes });
+function submitAll(){
+  const cook=document.getElementById("cook-select").value;
+  const notes=document.getElementById("notes-input").value;
+  const entries=[];
+  ITEMS.forEach(item=>{
+    const qty=getVal(item.id);
+    if(qty>0) entries.push({itemId:item.id,qty,portion:item.id==="ham"?hamPortion.charAt(0).toUpperCase()+hamPortion.slice(1):"",cook,notes});
   });
-  if (entries.length === 0) { showToast("Enter at least one quantity first", true); return; }
-
-  const btn = document.getElementById("log-btn");
-  btn.disabled = true;
-  btn.textContent = "Saving...";
-
-  fetch(SCRIPT_URL + "?action=submitMultiple", {
-    method: "POST",
-    mode: "no-cors",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ entries })
-  })
-  .then(() => {
-    btn.disabled = false;
-    btn.textContent = "✅ LOG IT";
-    todayCount += entries.length;
-    document.getElementById("entry-count").textContent = todayCount + " entries today";
-    showToast("✅ " + entries.length + " item" + (entries.length > 1 ? "s" : "") + " logged!");
+  if(entries.length===0){showToast("Enter at least one quantity first",true);return;}
+  const btn=document.getElementById("log-btn");
+  btn.disabled=true; btn.textContent="Saving...";
+  fetch(SCRIPT_URL+"?action=submitMultiple",{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify({entries})})
+  .then(()=>{
+    btn.disabled=false; btn.textContent="✅ LOG IT";
+    todayCount+=entries.length;
+    document.getElementById("entry-count").textContent=todayCount+" entries today";
+    showToast("✅ "+entries.length+" item"+(entries.length>1?"s":"")+" logged!");
     resetAll();
-  })
-  .catch(() => {
-    btn.disabled = false;
-    btn.textContent = "✅ LOG IT";
-    showToast("Error saving — check connection", true);
+  }).catch(()=>{btn.disabled=false;btn.textContent="✅ LOG IT";showToast("Error saving — check connection",true);});
+}
+
+function submitEod(){
+  const cook=document.getElementById("eod-cook-select").value;
+  if(!cook){showToast("Select your name first",true);return;}
+  const counts={};
+  ITEMS.forEach(item=>{
+    const el=document.getElementById("eod-"+item.id);
+    if(!el) return;
+    let qty=item.type==="weight"?(parseFloat(el.value)||0):(parseInt(el.value)||0);
+    if(item.id==="ham") qty=(HAM_FRACTIONS[eodHamPortion]||1)*qty;
+    counts[item.id]=qty;
   });
+  const btn=document.getElementById("eod-btn");
+  btn.disabled=true; btn.textContent="Saving...";
+  fetch(SCRIPT_URL+"?action=submitClosingInventory",{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify({submittedBy:cook,counts,notes:document.getElementById("eod-notes").value})})
+  .then(()=>{
+    btn.disabled=false; btn.textContent="🌙 SUBMIT CLOSING COUNT";
+    showToast("✅ Closing count saved!");
+    document.getElementById("reminder-banner").classList.remove("show");
+    ITEMS.forEach(item=>{const el=document.getElementById("eod-"+item.id);if(el)el.value=item.type==="weight"?"":0;});
+    document.getElementById("eod-notes").value="";
+    document.getElementById("eod-cook-select").value="";
+    eodHamPortion="whole"; selectEodPortion("whole");
+  }).catch(()=>{btn.disabled=false;btn.textContent="🌙 SUBMIT CLOSING COUNT";showToast("Error saving — check connection",true);});
 }
 
-function loadTotals() {
-  document.getElementById("totals-body").innerHTML = '<div class="total-row"><span style="color:var(--muted)">Loading...</span></div>';
-  fetch(SCRIPT_URL + "?action=getTodayTotals")
-    .then(r => r.json())
-    .then(totals => {
-      const body = document.getElementById("totals-body");
-      body.innerHTML = "";
-      let any = false;
-      ITEMS.forEach(item => {
-        const t = totals[item.id];
-        if (!t) return;
-        const hasData = t.qty > 0;
-        if (hasData) any = true;
-        let valStr;
-        if (item.type==="weight") valStr = hasData ? t.qty.toFixed(1)+" lbs" : "—";
-        else if (item.weightEach) valStr = hasData ? t.qty+" ("+t.lbs.toFixed(1)+" lbs)" : "—";
-        else                      valStr = hasData ? t.qty+" "+item.unit : "—";
-        const row = document.createElement("div");
-        row.className = "total-row";
-        row.innerHTML = `<span class="total-name ${hasData?"":"total-zero"}">${item.label}</span><span class="total-val ${hasData?"":"total-zero"}">${valStr}</span>`;
-        body.appendChild(row);
-      });
-      if (!any) body.innerHTML = '<div class="total-row"><span style="color:var(--muted)">No entries yet today</span></div>';
-    })
-    .catch(() => {
-      document.getElementById("totals-body").innerHTML = '<div class="total-row"><span style="color:var(--ember)">Error — tap refresh</span></div>';
+function loadTotals(){
+  document.getElementById("totals-body").innerHTML='<div class="total-row"><span style="color:var(--muted)">Loading...</span></div>';
+  fetch(SCRIPT_URL+"?action=getTodayTotals").then(r=>r.json()).then(totals=>{
+    const body=document.getElementById("totals-body");
+    body.innerHTML=""; let any=false;
+    ITEMS.forEach(item=>{
+      const t=totals[item.id];if(!t) return;
+      const hasData=t.qty>0;if(hasData) any=true;
+      let valStr;
+      if(item.id==="ham") valStr=hasData?toFractionDisplay(t.qty):"—";
+      else if(item.type==="weight") valStr=hasData?t.qty.toFixed(1)+" lbs":"—";
+      else if(item.weightEach) valStr=hasData?t.qty+" ("+t.lbs.toFixed(1)+" lbs)":"—";
+      else valStr=hasData?t.qty+" "+item.unit:"—";
+      const row=document.createElement("div");
+      row.className="total-row";
+      row.innerHTML=`<span class="total-name ${hasData?"":"total-zero"}">${item.label}</span><span class="total-val ${hasData?"":"total-zero"}">${valStr}</span>`;
+      body.appendChild(row);
     });
+    if(!any) body.innerHTML='<div class="total-row"><span style="color:var(--muted)">No entries yet today</span></div>';
+  }).catch(()=>{ document.getElementById("totals-body").innerHTML='<div class="total-row"><span style="color:var(--ember)">Error — tap refresh</span></div>'; });
 }
 
-function showTab(tab) {
-  document.getElementById("tab-log").style.display    = tab==="log"    ? "block" : "none";
-  document.getElementById("tab-totals").style.display = tab==="totals" ? "block" : "none";
-  document.querySelectorAll("nav a").forEach((a,i) => a.classList.toggle("active",(tab==="log"&&i===0)||(tab==="totals"&&i===1)));
-  if (tab==="totals") loadTotals();
+function toFractionDisplay(n){
+  if(n===0) return "0";
+  const whole=Math.floor(n);
+  const dec=Math.round((n-whole)*4)/4;
+  let frac="";
+  if(dec===0.25) frac="¼";
+  else if(dec===0.5) frac="½";
+  else if(dec===0.75) frac="¾";
+  if(whole===0) return frac||n.toFixed(2);
+  return frac?whole+frac:String(whole);
 }
 
-function showToast(msg, isError) {
-  const t = document.getElementById("toast");
-  t.textContent = msg;
-  t.className = "toast show" + (isError?" error":"");
-  setTimeout(() => t.className = "toast", 2800);
+function showTab(tab){
+  ["log","totals","eod"].forEach(t=>{ document.getElementById("tab-"+t).style.display=t===tab?"block":"none"; });
+  document.querySelectorAll("nav a").forEach((a,i)=>{ a.classList.toggle("active",(tab==="log"&&i===0)||(tab==="totals"&&i===1)||(tab==="eod"&&i===2)); });
+  if(tab==="totals") loadTotals();
 }
-
-function updateClock() {
-  const now = new Date();
-  document.getElementById("header-time").textContent = now.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"});
-  document.getElementById("date-display").textContent = now.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"});
+function showToast(msg,isError){
+  const t=document.getElementById("toast");
+  t.textContent=msg; t.className="toast show"+(isError?" error":"");
+  setTimeout(()=>t.className="toast",2800);
 }
-
+function updateClock(){
+  const now=new Date();
+  document.getElementById("header-time").textContent=now.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"});
+  document.getElementById("date-display").textContent=now.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"});
+}
 updateClock();
-setInterval(updateClock, 30000);
+setInterval(updateClock,30000);
 initVoice();
+checkReminder();
 </script>
 </body>
 </html>
