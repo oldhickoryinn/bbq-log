@@ -20,13 +20,16 @@
   nav { display: flex; background: var(--smoke); border-top: 1px solid #333; }
   nav a { flex: 1; text-align: center; padding: 0.55rem 0.25rem; font-size: 11px; color: #aaa; text-decoration: none; font-weight: 600; border-bottom: 3px solid transparent; cursor: pointer; }
   nav a.active { color: var(--amber); border-bottom-color: var(--amber); }
+
   .reminder-banner { background: #fff3cd; border-bottom: 2px solid #e67e22; padding: 0.75rem 1rem; display: none; align-items: center; gap: 10px; }
   .reminder-banner.show { display: flex; }
   .reminder-banner .text { flex: 1; font-size: 13px; color: #7a4f00; font-weight: 600; }
   .reminder-banner button { background: var(--amber); color: #fff; border: none; border-radius: 6px; padding: 0.4rem 0.8rem; font-size: 12px; font-weight: 700; cursor: pointer; white-space: nowrap; }
+
   .cook-row { padding: 0.75rem 1rem 0.5rem; }
   .cook-select { width: 100%; padding: 0.7rem 0.9rem; border: 1.5px solid var(--border); border-radius: 8px; font-size: 15px; background: #fff; color: var(--text); font-weight: 600; }
-  .voice-wrap { margin: 0 1rem 0.75rem; }
+
+  .voice-wrap { margin: 0 1rem 0.5rem; }
   .voice-btn { width: 100%; padding: 0.85rem 1rem; background: var(--smoke); color: #fff; border: none; border-radius: var(--radius); font-size: 15px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
   .voice-btn.listening { background: var(--ember); animation: vpulse 1s infinite; }
   .voice-btn.success   { background: var(--green); }
@@ -35,9 +38,16 @@
   .voice-hint { font-size: 11px; color: var(--muted); text-align: center; margin-top: 6px; line-height: 1.5; }
   .voice-transcript { margin-top: 7px; padding: 0.6rem 0.9rem; background: #fff; border: 1.5px solid var(--border); border-radius: 8px; font-size: 13px; color: var(--text); font-style: italic; display: none; }
   .voice-transcript.show { display: block; }
+
+  /* Correct last entry button */
+  .correct-wrap { margin: 0 1rem 0.75rem; }
+  .correct-btn { width: 100%; padding: 0.75rem 1rem; background: #fff; color: var(--bark); border: 1.5px solid var(--bark); border-radius: var(--radius); font-size: 14px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .correct-btn:active { background: var(--light); }
+
   .section-title { font-size: 11px; font-weight: 700; color: var(--bark); text-transform: uppercase; letter-spacing: 1px; padding: 0.6rem 1rem 0.35rem; }
+
   .item-row { background: #fff; border: 1.5px solid var(--border); margin: 0 1rem 8px; border-radius: var(--radius); padding: 0.65rem 1rem; display: flex; align-items: center; gap: 12px; transition: border-color 0.2s, background 0.2s; }
-  .item-row.has-qty { border-color: var(--bark); background: #fffaf5; }
+  .item-row.has-qty   { border-color: var(--bark); background: #fffaf5; }
   .item-row.voice-set { border-color: var(--green); background: #f2fbf4; }
   .item-icon { width: 46px; height: 46px; flex-shrink: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; }
   .icon-svg  { width: 46px; height: 46px; flex-shrink: 0; }
@@ -58,11 +68,15 @@
   .qty-btn:active { background: var(--border); }
   .qty-input { width: 56px; text-align: center; font-size: 21px; font-weight: 800; color: var(--bark); border: 1.5px solid var(--border); border-radius: 8px; padding: 0.25rem 0; background: #fff; }
   .weight-input { width: 76px; text-align: center; font-size: 19px; font-weight: 800; color: var(--bark); border: 1.5px solid var(--border); border-radius: 8px; padding: 0.3rem 0.2rem; background: #fff; }
+  /* Decimal input for EOD */
+  .dec-input { width: 70px; text-align: center; font-size: 19px; font-weight: 800; color: var(--bark); border: 1.5px solid var(--border); border-radius: 8px; padding: 0.25rem 0.1rem; background: #fff; }
+
   .notes-row { padding: 0 1rem 0.5rem; }
   .notes-input { width: 100%; padding: 0.65rem 0.9rem; border: 1.5px solid var(--border); border-radius: 8px; font-size: 15px; background: #fff; color: var(--text); }
   .log-btn { position: sticky; bottom: 0; z-index: 50; width: 100%; padding: 1.05rem; background: var(--bark); color: #fff; border: none; font-size: 18px; font-weight: 800; cursor: pointer; letter-spacing: 0.3px; box-shadow: 0 -2px 12px rgba(0,0,0,0.15); }
   .log-btn:active { background: var(--smoke); }
   .log-btn:disabled { background: var(--muted); }
+
   .totals-section { padding: 0.75rem 1rem 1rem; }
   .totals-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
   .totals-header { background: var(--smoke); color: #fff; padding: 0.6rem 1rem; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: space-between; }
@@ -73,12 +87,14 @@
   .total-zero { color: #ccc; }
   .refresh-btn { width: 100%; margin-top: 12px; padding: 0.75rem; background: #fff; border: 1.5px solid var(--border); border-radius: var(--radius); font-size: 14px; font-weight: 700; cursor: pointer; color: var(--bark); }
   .inv-btn { display: block; text-align: center; margin: 0.75rem 1rem 1.5rem; padding: 0.85rem; background: var(--smoke); color: var(--amber); border-radius: var(--radius); font-size: 14px; font-weight: 700; text-decoration: none; cursor: pointer; border: none; width: calc(100% - 2rem); }
+
   .eod-header { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); margin: 0.75rem 1rem 0.5rem; padding: 1rem; }
   .eod-header h2 { font-size: 16px; font-weight: 700; color: var(--bark); margin-bottom: 4px; }
   .eod-header p  { font-size: 13px; color: var(--muted); line-height: 1.5; }
   .eod-log-btn { position: sticky; bottom: 0; z-index: 50; width: 100%; padding: 1.05rem; background: #2c3e50; color: #fff; border: none; font-size: 18px; font-weight: 800; cursor: pointer; letter-spacing: 0.3px; box-shadow: 0 -2px 12px rgba(0,0,0,0.15); }
   .eod-log-btn:active { background: var(--smoke); }
   .eod-log-btn:disabled { background: var(--muted); }
+
   .toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: var(--green); color: #fff; padding: 0.75rem 1.5rem; border-radius: 50px; font-size: 15px; font-weight: 700; opacity: 0; transition: opacity 0.3s; pointer-events: none; white-space: nowrap; box-shadow: 0 4px 16px rgba(0,0,0,0.2); z-index: 200; }
   .toast.show { opacity: 1; }
   .toast.error { background: var(--ember); }
@@ -105,6 +121,7 @@
   <button onclick="showTab('eod')">Enter Now</button>
 </div>
 
+<!-- ══════════ LOG TAB ══════════ -->
 <div id="tab-log">
   <div class="cook-row">
     <select class="cook-select" id="cook-select">
@@ -118,6 +135,7 @@
       <option>New Cook 2</option>
     </select>
   </div>
+
   <div class="voice-wrap">
     <button class="voice-btn" id="voice-btn" onclick="startVoice()">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -132,11 +150,15 @@
     <div class="voice-transcript" id="voice-transcript"></div>
   </div>
 
+  <div class="correct-wrap">
+    <button class="correct-btn" onclick="loadLastEntry()">✏️ Correct My Last Entry</button>
+  </div>
+
   <div class="section-title">🥩 Whole Meats</div>
 
   <div class="item-row" id="row-brisket">
     <div class="item-icon ic-cream">🐄</div>
-    <div class="item-info"><div class="name">Brisket</div><div class="meta">whole</div></div>
+    <div class="item-info"><div class="name">Brisket</div><div class="meta">whole · 4/case</div></div>
     <div class="counter">
       <div class="qty-btn" onclick="adj('brisket',-1)">−</div>
       <input class="qty-input" type="number" id="qty-brisket" value="0" min="0" inputmode="numeric" onchange="highlight('brisket')">
@@ -146,7 +168,7 @@
 
   <div class="item-row" id="row-ribs">
     <div class="item-icon ic-red">🍖</div>
-    <div class="item-info"><div class="name">Beef Ribs</div><div class="meta">racks</div></div>
+    <div class="item-info"><div class="name">Beef Ribs</div><div class="meta">slabs · 10/case</div></div>
     <div class="counter">
       <div class="qty-btn" onclick="adj('ribs',-1)">−</div>
       <input class="qty-input" type="number" id="qty-ribs" value="0" min="0" inputmode="numeric" onchange="highlight('ribs')">
@@ -166,7 +188,6 @@
       <rect x="27" y="6"  width="4" height="17" rx="2" fill="#F8EED8"/>
       <rect x="34" y="8"  width="4" height="15" rx="2" fill="#EEE4D0"/>
       <rect x="5"  y="21" width="36" height="3" rx="1" fill="#3A0800" opacity="0.2"/>
-      <rect x="7"  y="22" width="30" height="2" rx="1" fill="#E8804A" opacity="0.3"/>
     </svg>
     <div class="item-info"><div class="name">Pork Ribs</div><div class="meta">slabs · 12/case</div></div>
     <div class="counter">
@@ -178,7 +199,7 @@
 
   <div class="item-row" id="row-chicken">
     <div class="item-icon ic-yellow">🐔</div>
-    <div class="item-info"><div class="name">Chicken</div><div class="meta">halves</div></div>
+    <div class="item-info"><div class="name">Chicken</div><div class="meta">halves · 22/case</div></div>
     <div class="counter">
       <div class="qty-btn" onclick="adj('chicken',-1)">−</div>
       <input class="qty-input" type="number" id="qty-chicken" value="0" min="0" inputmode="numeric" onchange="highlight('chicken')">
@@ -188,7 +209,7 @@
 
   <div class="item-row" id="row-pork">
     <div class="item-icon ic-pink">🐷</div>
-    <div class="item-info"><div class="name">Pork</div><div class="meta">whole</div></div>
+    <div class="item-info"><div class="name">Pork</div><div class="meta">pieces · 8/case</div></div>
     <div class="counter">
       <div class="qty-btn" onclick="adj('pork',-1)">−</div>
       <input class="qty-input" type="number" id="qty-pork" value="0" min="0" inputmode="numeric" onchange="highlight('pork')">
@@ -198,7 +219,7 @@
 
   <div class="item-row" id="row-turkey">
     <div class="item-icon ic-yellow">🦃</div>
-    <div class="item-info"><div class="name">Turkey</div><div class="meta">whole</div></div>
+    <div class="item-info"><div class="name">Turkey</div><div class="meta">breasts · 4/case</div></div>
     <div class="counter">
       <div class="qty-btn" onclick="adj('turkey',-1)">−</div>
       <input class="qty-input" type="number" id="qty-turkey" value="0" min="0" inputmode="numeric" onchange="highlight('turkey')">
@@ -220,7 +241,7 @@
       <circle cx="21" cy="18" r="2.2" fill="#EEE5CC"/>
       <circle cx="32" cy="20" r="2.2" fill="#EEE5CC"/>
     </svg>
-    <div class="item-info"><div class="name">Riblets</div><div class="meta">lbs</div></div>
+    <div class="item-info"><div class="name">Riblets</div><div class="meta">lbs · 30 lbs/case</div></div>
     <div class="counter">
       <input class="weight-input" type="number" id="qty-riblets" value="" min="0" step="0.5" inputmode="decimal" placeholder="0 lbs" onchange="highlight('riblets')">
     </div>
@@ -242,6 +263,7 @@
     </svg>
     <div class="item-info">
       <div class="name">Ham</div>
+      <div class="meta">2 whole/case</div>
       <div class="portion-wrap">
         <div class="portion-btn selected" id="ham-whole"   onclick="selectPortion('whole')">Whole</div>
         <div class="portion-btn"          id="ham-half"    onclick="selectPortion('half')">Half</div>
@@ -259,7 +281,7 @@
 
   <div class="item-row" id="row-gyro">
     <div class="item-icon ic-teal">🌀</div>
-    <div class="item-info"><div class="name">Gyro Cone</div><div class="meta">cones</div></div>
+    <div class="item-info"><div class="name">Gyro Cone</div><div class="meta">cones · 4/case</div></div>
     <div class="counter">
       <div class="qty-btn" onclick="adj('gyro',-1)">−</div>
       <input class="qty-input" type="number" id="qty-gyro" value="0" min="0" inputmode="numeric" onchange="highlight('gyro')">
@@ -279,7 +301,7 @@
       <path d="M14 13 Q16 19 14 26" stroke="#5C0E00" stroke-width="1.8" fill="none" opacity="0.4"/>
       <path d="M24 13 Q26 19 24 26" stroke="#5C0E00" stroke-width="1.6" fill="none" opacity="0.35"/>
     </svg>
-    <div class="item-info"><div class="name">Reg. Sausage</div><div class="meta">links · 1 lb ea</div></div>
+    <div class="item-info"><div class="name">Reg. Sausage</div><div class="meta">links · 10/case</div></div>
     <div class="counter">
       <div class="qty-btn" onclick="adj('sausage',-1)">−</div>
       <input class="qty-input" type="number" id="qty-sausage" value="0" min="0" inputmode="numeric" onchange="highlight('sausage')">
@@ -289,7 +311,7 @@
 
   <div class="item-row" id="row-jalapeno">
     <div class="item-icon ic-green">🌶️</div>
-    <div class="item-info"><div class="name">Jalapeño Sausage</div><div class="meta">pieces · ¼ lb ea</div></div>
+    <div class="item-info"><div class="name">Jalapeño Sausage</div><div class="meta">pieces · 40/case</div></div>
     <div class="counter">
       <div class="qty-btn" onclick="adj('jalapeno',-1)">−</div>
       <input class="qty-input" type="number" id="qty-jalapeno" value="0" min="0" inputmode="numeric" onchange="highlight('jalapeno')">
@@ -305,6 +327,7 @@
   <button class="log-btn" id="log-btn" onclick="submitAll()">✅ LOG IT</button>
 </div>
 
+<!-- ══════════ TOTALS TAB ══════════ -->
 <div id="tab-totals" style="display:none;">
   <div class="totals-section">
     <div class="totals-card">
@@ -316,10 +339,11 @@
   <button class="inv-btn" onclick="window.open('https://script.google.com/macros/s/AKfycbxeYHKYVZO_aLoHH0tOTGhubausZW81Kp48Z7-XF_iEobZhznCkBUumg3_WnJosDCP0/exec?page=inventory','_blank')">📦 Weekly Inventory Count →</button>
 </div>
 
+<!-- ══════════ END OF DAY TAB ══════════ -->
 <div id="tab-eod" style="display:none;">
   <div class="eod-header">
     <h2>🌙 End of Day — Closing Count</h2>
-    <p>Enter how much cooked meat is left at close. This calculates what was sold today.</p>
+    <p>Enter how much cooked meat is left at close. Decimals allowed — e.g. 0.5 for half a piece.</p>
   </div>
   <div class="cook-row">
     <select class="cook-select" id="eod-cook-select">
@@ -336,18 +360,20 @@
 
   <div class="section-title">🥩 Whole Meats Left at Close</div>
 
-  <div class="item-row"><div class="item-icon ic-cream">🐄</div>
+  <div class="item-row">
+    <div class="item-icon ic-cream">🐄</div>
     <div class="item-info"><div class="name">Brisket</div><div class="meta">whole remaining</div></div>
-    <div class="counter"><div class="qty-btn" onclick="eodAdj('brisket',-1)">−</div>
-    <input class="qty-input" type="number" id="eod-brisket" value="0" min="0" inputmode="numeric">
-    <div class="qty-btn" onclick="eodAdj('brisket',1)">+</div></div>
+    <div class="counter"><div class="qty-btn" onclick="eodAdj('brisket',-0.5)">−</div>
+    <input class="dec-input" type="number" id="eod-brisket" value="0" min="0" step="0.5" inputmode="decimal">
+    <div class="qty-btn" onclick="eodAdj('brisket',0.5)">+</div></div>
   </div>
 
-  <div class="item-row"><div class="item-icon ic-red">🍖</div>
-    <div class="item-info"><div class="name">Beef Ribs</div><div class="meta">racks remaining</div></div>
-    <div class="counter"><div class="qty-btn" onclick="eodAdj('ribs',-1)">−</div>
-    <input class="qty-input" type="number" id="eod-ribs" value="0" min="0" inputmode="numeric">
-    <div class="qty-btn" onclick="eodAdj('ribs',1)">+</div></div>
+  <div class="item-row">
+    <div class="item-icon ic-red">🍖</div>
+    <div class="item-info"><div class="name">Beef Ribs</div><div class="meta">slabs remaining</div></div>
+    <div class="counter"><div class="qty-btn" onclick="eodAdj('ribs',-0.5)">−</div>
+    <input class="dec-input" type="number" id="eod-ribs" value="0" min="0" step="0.5" inputmode="decimal">
+    <div class="qty-btn" onclick="eodAdj('ribs',0.5)">+</div></div>
   </div>
 
   <div class="item-row">
@@ -362,30 +388,33 @@
       <rect x="34" y="8" width="4" height="15" rx="2" fill="#EEE4D0"/>
     </svg>
     <div class="item-info"><div class="name">Pork Ribs</div><div class="meta">slabs remaining</div></div>
-    <div class="counter"><div class="qty-btn" onclick="eodAdj('pork_ribs',-1)">−</div>
-    <input class="qty-input" type="number" id="eod-pork_ribs" value="0" min="0" inputmode="numeric">
-    <div class="qty-btn" onclick="eodAdj('pork_ribs',1)">+</div></div>
+    <div class="counter"><div class="qty-btn" onclick="eodAdj('pork_ribs',-0.5)">−</div>
+    <input class="dec-input" type="number" id="eod-pork_ribs" value="0" min="0" step="0.5" inputmode="decimal">
+    <div class="qty-btn" onclick="eodAdj('pork_ribs',0.5)">+</div></div>
   </div>
 
-  <div class="item-row"><div class="item-icon ic-yellow">🐔</div>
+  <div class="item-row">
+    <div class="item-icon ic-yellow">🐔</div>
     <div class="item-info"><div class="name">Chicken</div><div class="meta">halves remaining</div></div>
-    <div class="counter"><div class="qty-btn" onclick="eodAdj('chicken',-1)">−</div>
-    <input class="qty-input" type="number" id="eod-chicken" value="0" min="0" inputmode="numeric">
-    <div class="qty-btn" onclick="eodAdj('chicken',1)">+</div></div>
+    <div class="counter"><div class="qty-btn" onclick="eodAdj('chicken',-0.5)">−</div>
+    <input class="dec-input" type="number" id="eod-chicken" value="0" min="0" step="0.5" inputmode="decimal">
+    <div class="qty-btn" onclick="eodAdj('chicken',0.5)">+</div></div>
   </div>
 
-  <div class="item-row"><div class="item-icon ic-pink">🐷</div>
-    <div class="item-info"><div class="name">Pork</div><div class="meta">whole remaining</div></div>
-    <div class="counter"><div class="qty-btn" onclick="eodAdj('pork',-1)">−</div>
-    <input class="qty-input" type="number" id="eod-pork" value="0" min="0" inputmode="numeric">
-    <div class="qty-btn" onclick="eodAdj('pork',1)">+</div></div>
+  <div class="item-row">
+    <div class="item-icon ic-pink">🐷</div>
+    <div class="item-info"><div class="name">Pork</div><div class="meta">pieces remaining</div></div>
+    <div class="counter"><div class="qty-btn" onclick="eodAdj('pork',-0.5)">−</div>
+    <input class="dec-input" type="number" id="eod-pork" value="0" min="0" step="0.5" inputmode="decimal">
+    <div class="qty-btn" onclick="eodAdj('pork',0.5)">+</div></div>
   </div>
 
-  <div class="item-row"><div class="item-icon ic-yellow">🦃</div>
-    <div class="item-info"><div class="name">Turkey</div><div class="meta">whole remaining</div></div>
-    <div class="counter"><div class="qty-btn" onclick="eodAdj('turkey',-1)">−</div>
-    <input class="qty-input" type="number" id="eod-turkey" value="0" min="0" inputmode="numeric">
-    <div class="qty-btn" onclick="eodAdj('turkey',1)">+</div></div>
+  <div class="item-row">
+    <div class="item-icon ic-yellow">🦃</div>
+    <div class="item-info"><div class="name">Turkey</div><div class="meta">breasts remaining</div></div>
+    <div class="counter"><div class="qty-btn" onclick="eodAdj('turkey',-0.5)">−</div>
+    <input class="dec-input" type="number" id="eod-turkey" value="0" min="0" step="0.5" inputmode="decimal">
+    <div class="qty-btn" onclick="eodAdj('turkey',0.5)">+</div></div>
   </div>
 
   <div class="section-title">⚖️ By Weight</div>
@@ -425,16 +454,17 @@
       </div>
     </div>
     <div class="counter"><div class="qty-btn" onclick="eodAdj('ham',-1)">−</div>
-    <input class="qty-input" type="number" id="eod-ham" value="0" min="0" inputmode="numeric">
+    <input class="dec-input" type="number" id="eod-ham" value="0" min="0" step="1" inputmode="numeric">
     <div class="qty-btn" onclick="eodAdj('ham',1)">+</div></div>
   </div>
 
   <div class="section-title">🌀 Gyro & Sausage</div>
 
-  <div class="item-row"><div class="item-icon ic-teal">🌀</div>
+  <div class="item-row">
+    <div class="item-icon ic-teal">🌀</div>
     <div class="item-info"><div class="name">Gyro Cone</div><div class="meta">cones remaining</div></div>
     <div class="counter"><div class="qty-btn" onclick="eodAdj('gyro',-1)">−</div>
-    <input class="qty-input" type="number" id="eod-gyro" value="0" min="0" inputmode="numeric">
+    <input class="dec-input" type="number" id="eod-gyro" value="0" min="0" step="1" inputmode="numeric">
     <div class="qty-btn" onclick="eodAdj('gyro',1)">+</div></div>
   </div>
 
@@ -447,14 +477,15 @@
     </svg>
     <div class="item-info"><div class="name">Reg. Sausage</div><div class="meta">links remaining</div></div>
     <div class="counter"><div class="qty-btn" onclick="eodAdj('sausage',-1)">−</div>
-    <input class="qty-input" type="number" id="eod-sausage" value="0" min="0" inputmode="numeric">
+    <input class="dec-input" type="number" id="eod-sausage" value="0" min="0" step="1" inputmode="numeric">
     <div class="qty-btn" onclick="eodAdj('sausage',1)">+</div></div>
   </div>
 
-  <div class="item-row"><div class="item-icon ic-green">🌶️</div>
+  <div class="item-row">
+    <div class="item-icon ic-green">🌶️</div>
     <div class="item-info"><div class="name">Jalapeño Sausage</div><div class="meta">pieces remaining</div></div>
     <div class="counter"><div class="qty-btn" onclick="eodAdj('jalapeno',-1)">−</div>
-    <input class="qty-input" type="number" id="eod-jalapeno" value="0" min="0" inputmode="numeric">
+    <input class="dec-input" type="number" id="eod-jalapeno" value="0" min="0" step="1" inputmode="numeric">
     <div class="qty-btn" onclick="eodAdj('jalapeno',1)">+</div></div>
   </div>
 
@@ -470,20 +501,23 @@
 
 <script>
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxeYHKYVZO_aLoHH0tOTGhubausZW81Kp48Z7-XF_iEobZhznCkBUumg3_WnJosDCP0/exec";
+
 const ITEMS = [
-  { id:"brisket",   label:"Brisket",         type:"count",   unit:"whole" },
-  { id:"ribs",      label:"Beef Ribs",        type:"count",   unit:"rack" },
-  { id:"pork_ribs", label:"Pork Ribs",        type:"count",   unit:"slab" },
-  { id:"chicken",   label:"Chicken",          type:"count",   unit:"half" },
-  { id:"pork",      label:"Pork",             type:"count",   unit:"whole" },
-  { id:"turkey",    label:"Turkey",           type:"count",   unit:"whole" },
-  { id:"riblets",   label:"Riblets",          type:"weight",  unit:"lbs" },
-  { id:"ham",       label:"Ham",              type:"portion", unit:"" },
-  { id:"gyro",      label:"Gyro Cone",        type:"count",   unit:"cone" },
-  { id:"sausage",   label:"Reg. Sausage",     type:"count",   unit:"link",  weightEach:1 },
-  { id:"jalapeno",  label:"Jalapeño Sausage", type:"count",   unit:"piece", weightEach:0.25 }
+  { id:"brisket",   label:"Brisket",         type:"count",   unit:"whole",  caseSize:4   },
+  { id:"ribs",      label:"Beef Ribs",        type:"count",   unit:"slab",   caseSize:10  },
+  { id:"pork_ribs", label:"Pork Ribs",        type:"count",   unit:"slab",   caseSize:12  },
+  { id:"chicken",   label:"Chicken",          type:"count",   unit:"half",   caseSize:22  },
+  { id:"pork",      label:"Pork",             type:"count",   unit:"piece",  caseSize:8   },
+  { id:"turkey",    label:"Turkey",           type:"count",   unit:"breast", caseSize:4   },
+  { id:"riblets",   label:"Riblets",          type:"weight",  unit:"lbs",    caseSize:30  },
+  { id:"ham",       label:"Ham",              type:"portion", unit:"",       caseSize:2   },
+  { id:"gyro",      label:"Gyro Cone",        type:"count",   unit:"cone",   caseSize:4   },
+  { id:"sausage",   label:"Reg. Sausage",     type:"count",   unit:"link",   caseSize:10, weightEach:1    },
+  { id:"jalapeno",  label:"Jalapeño Sausage", type:"count",   unit:"piece",  caseSize:40, weightEach:0.25 }
 ];
+
 const HAM_FRACTIONS = { "whole":1, "half":0.5, "quarter":0.25 };
+
 const VOICE_MAP = [
   { id:"brisket",   keywords:["brisket","briskets","cow"] },
   { id:"ribs",      keywords:["beef rib","beef ribs","rib rack","rib racks"] },
@@ -497,6 +531,7 @@ const VOICE_MAP = [
   { id:"sausage",   keywords:["regular sausage","reg sausage","sausage link","sausage links","sausage","sausages","link","links"] },
   { id:"jalapeno",  keywords:["jalapeno sausage","jalapeño sausage","jalapeno","jalapeño","spicy sausage","hot link","hot links"] }
 ];
+
 const WORD_NUMS = {
   "zero":0,"one":1,"two":2,"three":3,"four":4,"five":5,"six":6,"seven":7,"eight":8,"nine":9,
   "ten":10,"eleven":11,"twelve":12,"thirteen":13,"fourteen":14,"fifteen":15,
@@ -505,8 +540,10 @@ const WORD_NUMS = {
   "twenty six":26,"twenty seven":27,"twenty eight":28,"twenty nine":29,"thirty":30,
   "thirty five":35,"forty":40,"forty five":45,"fifty":50,"sixty":60,"seventy":70,"eighty":80,"ninety":90
 };
+
 let hamPortion="whole", eodHamPortion="whole", todayCount=0, recognition=null, isListening=false;
 
+// ── Morning reminder ─────────────────────────────────────────
 function checkReminder() {
   fetch(SCRIPT_URL + "?action=checkMorningReminder")
     .then(r => r.json())
@@ -520,6 +557,96 @@ function checkReminder() {
     }).catch(()=>{});
 }
 
+// ── Load last entry for correction ───────────────────────────
+function loadLastEntry() {
+  showToast("Loading last entry...", false);
+  fetch(SCRIPT_URL + "?action=getLastEntry")
+    .then(r => r.json())
+    .then(res => {
+      if (!res.ok) { showToast(res.msg || "No entries today to correct", true); return; }
+
+      // Reset all fields first
+      resetAll();
+
+      // Fill in the values from last entry
+      res.entries.forEach(entry => {
+        const input = document.getElementById("qty-" + entry.itemId);
+        if (!input) return;
+
+        // For ham, need to reverse the fraction back to a display value
+        if (entry.itemId === "ham") {
+          // qty is stored as whole equiv, show as count with appropriate portion
+          // Try to figure out portion from qty
+          if (entry.qty % 1 === 0) { selectPortion("whole"); input.value = entry.qty; }
+          else if ((entry.qty * 2) % 1 === 0) { selectPortion("half"); input.value = entry.qty / 0.5; }
+          else { selectPortion("quarter"); input.value = entry.qty / 0.25; }
+        } else {
+          input.value = entry.qty;
+        }
+        highlight(entry.itemId);
+
+        // Set cook if present
+        if (entry.cook) {
+          const sel = document.getElementById("cook-select");
+          for (let i = 0; i < sel.options.length; i++) {
+            if (sel.options[i].value === entry.cook) { sel.selectedIndex = i; break; }
+          }
+        }
+        if (entry.notes) document.getElementById("notes-input").value = entry.notes;
+      });
+
+      showToast("✅ Last entry loaded — make your changes and tap LOG IT", false);
+
+      // Change LOG IT button to indicate correction mode
+      const btn = document.getElementById("log-btn");
+      btn.textContent = "✅ SAVE CORRECTION";
+      btn.style.background = "#2c3e50";
+      btn.onclick = submitCorrection;
+    })
+    .catch(() => showToast("Error loading last entry", true));
+}
+
+// ── Submit as a correction (replaces last entry) ─────────────
+function submitCorrection() {
+  const cook  = document.getElementById("cook-select").value;
+  const notes = document.getElementById("notes-input").value;
+  const entries = [];
+  ITEMS.forEach(item => {
+    const qty = getVal(item.id);
+    if (qty > 0) entries.push({
+      itemId:  item.id,
+      qty:     qty,
+      portion: item.id === "ham" ? hamPortion.charAt(0).toUpperCase() + hamPortion.slice(1) : "",
+      cook, notes
+    });
+  });
+  if (entries.length === 0) { showToast("Enter at least one quantity first", true); return; }
+
+  const btn = document.getElementById("log-btn");
+  btn.disabled = true;
+  btn.textContent = "Saving correction...";
+
+  fetch(SCRIPT_URL + "?action=correctLastEntry", {
+    method:"POST", mode:"no-cors",
+    headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({ entries })
+  })
+  .then(() => {
+    btn.disabled = false;
+    btn.textContent = "✅ LOG IT";
+    btn.style.background = "";
+    btn.onclick = submitAll;
+    showToast("✅ Entry corrected!");
+    resetAll();
+  })
+  .catch(() => {
+    btn.disabled = false;
+    btn.textContent = "✅ SAVE CORRECTION";
+    showToast("Error saving — check connection", true);
+  });
+}
+
+// ── Voice ─────────────────────────────────────────────────────
 function initVoice() {
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (!SR) { document.getElementById("voice-btn").classList.add("nosupport"); document.getElementById("voice-label").textContent="Voice Not Supported"; return false; }
@@ -584,17 +711,25 @@ function parseVoice(transcript) {
   else showToast("✅ Filled "+matched+" item"+(matched>1?"s":"")+" — review & log!",false);
 }
 
+// ── Controls ──────────────────────────────────────────────────
 function selectPortion(p){ hamPortion=p; ["whole","half","quarter"].forEach(x=>document.getElementById("ham-"+x).classList.toggle("selected",x===p)); highlight("ham"); }
 function selectEodPortion(p){ eodHamPortion=p; ["whole","half","quarter"].forEach(x=>document.getElementById("eod-ham-"+x).classList.toggle("selected",x===p)); }
 function adj(id,delta){ const el=document.getElementById("qty-"+id); el.value=Math.max(0,(parseInt(el.value)||0)+delta); highlight(id); }
-function eodAdj(id,delta){ const el=document.getElementById("eod-"+id); el.value=Math.max(0,(parseInt(el.value)||0)+delta); }
-function highlight(id){ const el=document.getElementById("qty-"+id); const row=document.getElementById("row-"+id); const v=id==="riblets"?parseFloat(el.value):parseInt(el.value); row.classList.remove("voice-set"); row.classList.toggle("has-qty",v>0); }
+function eodAdj(id,delta){
+  const el=document.getElementById("eod-"+id);
+  const cur=parseFloat(el.value)||0;
+  el.value=Math.max(0,Math.round((cur+delta)*10)/10);
+}
+function highlight(id){ const el=document.getElementById("qty-"+id); const row=document.getElementById("row-"+id); if(!row) return; const v=id==="riblets"?parseFloat(el.value):parseInt(el.value); row.classList.remove("voice-set"); row.classList.toggle("has-qty",v>0); }
 function getVal(id){ const el=document.getElementById("qty-"+id); return id==="riblets"?(parseFloat(el.value)||0):(parseInt(el.value)||0); }
 function resetAll(){
   ITEMS.forEach(item=>{const el=document.getElementById("qty-"+item.id);if(el)el.value=item.type==="weight"?"":0;const row=document.getElementById("row-"+item.id);if(row)row.classList.remove("has-qty","voice-set");});
   document.getElementById("notes-input").value="";
   document.getElementById("voice-transcript").classList.remove("show");
   hamPortion="whole"; selectPortion("whole");
+  // Reset log button in case it was in correction mode
+  const btn=document.getElementById("log-btn");
+  btn.textContent="✅ LOG IT"; btn.style.background=""; btn.onclick=submitAll;
 }
 
 function submitAll(){
@@ -625,7 +760,7 @@ function submitEod(){
   ITEMS.forEach(item=>{
     const el=document.getElementById("eod-"+item.id);
     if(!el) return;
-    let qty=item.type==="weight"?(parseFloat(el.value)||0):(parseInt(el.value)||0);
+    let qty=parseFloat(el.value)||0;
     if(item.id==="ham") qty=(HAM_FRACTIONS[eodHamPortion]||1)*qty;
     counts[item.id]=qty;
   });
@@ -651,14 +786,14 @@ function loadTotals(){
     ITEMS.forEach(item=>{
       const t=totals[item.id];if(!t) return;
       const hasData=t.qty>0;if(hasData) any=true;
-      let valStr;
-      if(item.id==="ham") valStr=hasData?toFractionDisplay(t.qty):"—";
-      else if(item.type==="weight") valStr=hasData?t.qty.toFixed(1)+" lbs":"—";
-      else if(item.weightEach) valStr=hasData?t.qty+" ("+t.lbs.toFixed(1)+" lbs)":"—";
-      else valStr=hasData?t.qty+" "+item.unit:"—";
+      let valStr, caseStr="";
+      if(item.id==="ham"){ valStr=hasData?toFractionDisplay(t.qty):"—"; if(hasData) caseStr=" ("+roundTo2(t.qty/item.caseSize)+" cases)"; }
+      else if(item.type==="weight"){ valStr=hasData?t.qty.toFixed(1)+" lbs":"—"; if(hasData) caseStr=" ("+roundTo2(t.qty/item.caseSize)+" cases)"; }
+      else if(item.weightEach){ valStr=hasData?t.qty+" links":"—"; if(hasData) caseStr=" ("+roundTo2(t.qty/item.caseSize)+" cases)"; }
+      else{ valStr=hasData?t.qty+" "+item.unit:"—"; if(hasData) caseStr=" ("+roundTo2(t.qty/item.caseSize)+" cases)"; }
       const row=document.createElement("div");
       row.className="total-row";
-      row.innerHTML=`<span class="total-name ${hasData?"":"total-zero"}">${item.label}</span><span class="total-val ${hasData?"":"total-zero"}">${valStr}</span>`;
+      row.innerHTML=`<span class="total-name ${hasData?"":"total-zero"}">${item.label}</span><span class="total-val ${hasData?"":"total-zero"}">${valStr}<span style="font-size:11px;color:var(--muted);font-weight:400;">${hasData?caseStr:""}</span></span>`;
       body.appendChild(row);
     });
     if(!any) body.innerHTML='<div class="total-row"><span style="color:var(--muted)">No entries yet today</span></div>';
@@ -676,6 +811,8 @@ function toFractionDisplay(n){
   if(whole===0) return frac||n.toFixed(2);
   return frac?whole+frac:String(whole);
 }
+
+function roundTo2(n){ return Math.round(n*100)/100; }
 
 function showTab(tab){
   ["log","totals","eod"].forEach(t=>{ document.getElementById("tab-"+t).style.display=t===tab?"block":"none"; });
