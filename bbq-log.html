@@ -128,7 +128,7 @@
   <div class="cook-screen-header">
     <div class="logo">🔥</div>
     <h2>Old Hickory Inn BBQ</h2>
-    <p>Who is cooking today?</p>
+    <p>Who is cooking today? <span style="color:#555;font-size:12px;">(debug v1)</span></p>
   </div>
   <div class="cook-divider"></div>
   <div class="cook-grid">
@@ -553,6 +553,10 @@
 <div class="toast" id="toast"></div>
 
 <script>
+window.onerror = function(msg, src, line, col) {
+  alert("JS ERROR: " + msg + "\nline " + line + ":" + col);
+  return false;
+};
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxeYHKYVZO_aLoHH0tOTGhubausZW81Kp48Z7-XF_iEobZhznCkBUumg3_WnJosDCP0/exec";
 
 const ITEMS = [
