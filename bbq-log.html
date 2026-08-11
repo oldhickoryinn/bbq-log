@@ -55,6 +55,7 @@
   .menu-tile .tile-icon { font-size: 48px; }
   .menu-tile .tile-label { font-size: 18px; font-weight: 800; color: #fff; line-height: 1.2; }
   .menu-tile .tile-sub { font-size: 12px; color: #777; }
+  .menu-tile.wide { grid-column: 1 / -1; }
   .menu-footer { padding: 0 1rem 1.5rem; flex-shrink: 0; }
   .change-cook-btn { width: 100%; padding: 0.85rem; background: transparent; border: 1.5px solid #333; border-radius: var(--radius); color: #888; font-size: 15px; font-weight: 600; cursor: pointer; }
 
@@ -181,6 +182,11 @@
       <div class="tile-icon">📦</div>
       <div class="tile-label">Weekly Inventory</div>
       <div class="tile-sub">Case count form</div>
+    </div>
+    <div class="menu-tile wide" onclick="showScreen('waste')">
+      <div class="tile-icon">🗑️</div>
+      <div class="tile-label">Waste / Trash</div>
+      <div class="tile-sub">Log thrown-out items</div>
     </div>
   </div>
   <div class="menu-footer">
@@ -551,6 +557,131 @@
   <button class="action-btn black" id="eod-btn" onclick="submitEod()">🌙 SUBMIT CLOSING COUNT</button>
 </div>
 
+
+<!-- ══ SCREEN 6 — WASTE / TRASH ══ -->
+<div id="screen-waste" class="screen">
+  <div class="app-header">
+    <button class="back-btn" onclick="showScreen('menu')">‹</button>
+    <h1>🗑️ Waste / Trash</h1>
+    <div class="cook-badge" id="waste-cook-badge">Cook</div>
+  </div>
+  <div class="subheader">
+    <span id="waste-date"></span>
+    <span>Thrown-out items</span>
+  </div>
+  <div class="scroll-area" style="padding-bottom:85px;">
+    <div class="eod-info" id="waste-today">
+      🗑️ <strong>Thrown out today:</strong> loading...
+    </div>
+    <div class="eod-info">
+      Log anything that got <strong>thrown in the trash</strong> — dried out, sat too long, dropped, etc. Use <strong>0.5</strong> for half a piece.
+    </div>
+
+    <div class="section-title">🥩 Whole Meats</div>
+
+    <div class="item-row">
+      <div class="item-icon ic-cream">🐄</div>
+      <div class="item-info"><div class="name">Brisket</div><div class="meta">whole thrown out</div></div>
+      <div class="counter"><div class="qty-btn" onclick="wAdj('brisket',-0.5)">−</div>
+      <input class="dec-input" type="number" id="w-brisket" value="0" min="0" step="0.5" inputmode="decimal">
+      <div class="qty-btn" onclick="wAdj('brisket',0.5)">+</div></div>
+    </div>
+    <div class="item-row">
+      <div class="item-icon ic-red">🍖</div>
+      <div class="item-info"><div class="name">Beef Ribs</div><div class="meta">slabs thrown out</div></div>
+      <div class="counter"><div class="qty-btn" onclick="wAdj('ribs',-0.5)">−</div>
+      <input class="dec-input" type="number" id="w-ribs" value="0" min="0" step="0.5" inputmode="decimal">
+      <div class="qty-btn" onclick="wAdj('ribs',0.5)">+</div></div>
+    </div>
+    <div class="item-row">
+      <div class="item-icon ic-cream">🥩</div>
+      <div class="item-info"><div class="name">Pork Ribs</div><div class="meta">slabs thrown out</div></div>
+      <div class="counter"><div class="qty-btn" onclick="wAdj('pork_ribs',-0.5)">−</div>
+      <input class="dec-input" type="number" id="w-pork_ribs" value="0" min="0" step="0.5" inputmode="decimal">
+      <div class="qty-btn" onclick="wAdj('pork_ribs',0.5)">+</div></div>
+    </div>
+    <div class="item-row">
+      <div class="item-icon ic-yellow">🐔</div>
+      <div class="item-info"><div class="name">Chicken</div><div class="meta">halves thrown out</div></div>
+      <div class="counter"><div class="qty-btn" onclick="wAdj('chicken',-0.5)">−</div>
+      <input class="dec-input" type="number" id="w-chicken" value="0" min="0" step="0.5" inputmode="decimal">
+      <div class="qty-btn" onclick="wAdj('chicken',0.5)">+</div></div>
+    </div>
+    <div class="item-row">
+      <div class="item-icon ic-pink">🐷</div>
+      <div class="item-info"><div class="name">Pork</div><div class="meta">pieces thrown out</div></div>
+      <div class="counter"><div class="qty-btn" onclick="wAdj('pork',-0.5)">−</div>
+      <input class="dec-input" type="number" id="w-pork" value="0" min="0" step="0.5" inputmode="decimal">
+      <div class="qty-btn" onclick="wAdj('pork',0.5)">+</div></div>
+    </div>
+    <div class="item-row">
+      <div class="item-icon ic-yellow">🦃</div>
+      <div class="item-info"><div class="name">Turkey</div><div class="meta">breasts thrown out</div></div>
+      <div class="counter"><div class="qty-btn" onclick="wAdj('turkey',-0.5)">−</div>
+      <input class="dec-input" type="number" id="w-turkey" value="0" min="0" step="0.5" inputmode="decimal">
+      <div class="qty-btn" onclick="wAdj('turkey',0.5)">+</div></div>
+    </div>
+
+    <div class="section-title">⚖️ By Weight</div>
+
+    <div class="item-row">
+      <div class="item-icon ic-cream">🍖</div>
+      <div class="item-info"><div class="name">Riblets</div><div class="meta">lbs thrown out</div></div>
+      <div class="counter"><input class="weight-input" type="number" id="w-riblets" value="" min="0" step="0.5" inputmode="decimal" placeholder="0 lbs"></div>
+    </div>
+
+    <div class="section-title">🍖 Ham</div>
+
+    <div class="item-row">
+      <div class="item-icon ic-red">🍖</div>
+      <div class="item-info">
+        <div class="name">Ham</div>
+        <div class="portion-wrap">
+          <div class="portion-btn selected" id="w-ham-whole"   onclick="selectWastePortion('whole')">Whole</div>
+          <div class="portion-btn"          id="w-ham-half"    onclick="selectWastePortion('half')">Half</div>
+          <div class="portion-btn"          id="w-ham-quarter" onclick="selectWastePortion('quarter')">Quarter</div>
+        </div>
+      </div>
+      <div class="counter"><div class="qty-btn" onclick="wAdj('ham',-1)">−</div>
+      <input class="dec-input" type="number" id="w-ham" value="0" min="0" step="1" inputmode="numeric">
+      <div class="qty-btn" onclick="wAdj('ham',1)">+</div></div>
+    </div>
+
+    <div class="section-title">🌀 Gyro &amp; Sausage</div>
+
+    <div class="item-row">
+      <div class="item-icon ic-teal">🌀</div>
+      <div class="item-info"><div class="name">Gyro Cone</div><div class="meta">cones thrown out</div></div>
+      <div class="counter"><div class="qty-btn" onclick="wAdj('gyro',-1)">−</div>
+      <input class="dec-input" type="number" id="w-gyro" value="0" min="0" step="1" inputmode="numeric">
+      <div class="qty-btn" onclick="wAdj('gyro',1)">+</div></div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-icon ic-cream">🌭</div>
+      <div class="item-info"><div class="name">Reg. Sausage</div><div class="meta">links thrown out</div></div>
+      <div class="counter"><div class="qty-btn" onclick="wAdj('sausage',-1)">−</div>
+      <input class="dec-input" type="number" id="w-sausage" value="0" min="0" step="1" inputmode="numeric">
+      <div class="qty-btn" onclick="wAdj('sausage',1)">+</div></div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-icon ic-green">🌶️</div>
+      <div class="item-info"><div class="name">Jalapeño Sausage</div><div class="meta">pieces thrown out</div></div>
+      <div class="counter"><div class="qty-btn" onclick="wAdj('jalapeno',-1)">−</div>
+      <input class="dec-input" type="number" id="w-jalapeno" value="0" min="0" step="1" inputmode="numeric">
+      <div class="qty-btn" onclick="wAdj('jalapeno',1)">+</div></div>
+    </div>
+
+    <div class="section-title">📝 Reason (optional)</div>
+    <div class="notes-row">
+      <input class="notes-input" type="text" id="w-notes" placeholder="e.g. dried out, sat since lunch...">
+    </div>
+    <div style="height:10px;"></div>
+  </div>
+  <button class="action-btn red" id="waste-btn" onclick="submitWasteLog()">🗑️ LOG WASTE</button>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -576,7 +707,7 @@ let currentCook="", hamPortion="whole", eodHamPortion="whole", todayCount=0, cur
 // ── Cook selection ────────────────────────────────────────────
 function selectCook(name) {
   currentCook = name;
-  ["menu","log","totals","eod"].forEach(s => {
+  ["menu","log","totals","eod","waste"].forEach(s => {
     const el = document.getElementById(s+"-cook-badge");
     if (el) el.textContent = name;
   });
@@ -591,6 +722,7 @@ function showScreen(id) {
   document.getElementById("screen-"+id).classList.add("active");
   updateClock();
   if (id === "totals") loadTotals();
+  if (id === "waste")  loadWasteToday();
 }
 
 function openInventory() {
@@ -750,6 +882,57 @@ function submitEod(){
   }).catch(()=>{ btn.disabled=false; btn.textContent="🌙 SUBMIT CLOSING COUNT"; showToast("Error — check connection","error"); });
 }
 
+// ── Waste / Trash ─────────────────────────────────────────────
+let wasteHamPortion = "whole";
+function selectWastePortion(p){ wasteHamPortion=p; ["whole","half","quarter"].forEach(x=>document.getElementById("w-ham-"+x).classList.toggle("selected",x===p)); }
+function wAdj(id,delta){ const el=document.getElementById("w-"+id); el.value=Math.max(0,Math.round(((parseFloat(el.value)||0)+delta)*10)/10); }
+
+function loadWasteToday(){
+  const box=document.getElementById("waste-today");
+  box.innerHTML="🗑️ <strong>Thrown out today:</strong> loading...";
+  fetch(SCRIPT_URL+"?action=getTodayWaste")
+    .then(r=>r.json())
+    .then(totals=>{
+      const parts=[];
+      ITEMS.forEach(item=>{
+        const t=totals[item.id];
+        if(t && t.qty>0){
+          const q=item.id==="ham"?toFractionDisplay(t.qty):(Math.round(t.qty*10)/10);
+          parts.push(q+" "+item.label);
+        }
+      });
+      box.innerHTML="🗑️ <strong>Thrown out today:</strong> "+(parts.length?parts.join(", "):"nothing yet");
+    })
+    .catch(()=>{ box.innerHTML="🗑️ <strong>Thrown out today:</strong> couldn't load — check connection"; });
+}
+
+function resetWaste(){
+  ITEMS.forEach(item=>{ const el=document.getElementById("w-"+item.id); if(el) el.value=item.type==="weight"?"":0; });
+  document.getElementById("w-notes").value="";
+  wasteHamPortion="whole"; selectWastePortion("whole");
+}
+
+function submitWasteLog(){
+  const reason=document.getElementById("w-notes").value;
+  const entries=[];
+  ITEMS.forEach(item=>{
+    const el=document.getElementById("w-"+item.id);
+    if(!el) return;
+    const qty=parseFloat(el.value)||0;
+    if(qty>0) entries.push({itemId:item.id,qty,portion:item.id==="ham"?wasteHamPortion.charAt(0).toUpperCase()+wasteHamPortion.slice(1):"",cook:currentCook,reason});
+  });
+  if(entries.length===0){showToast("Enter at least one item first","warn");return;}
+  const btn=document.getElementById("waste-btn");
+  btn.disabled=true; btn.textContent="Saving...";
+  fetch(SCRIPT_URL+"?action=submitWaste",{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify({entries})})
+  .then(()=>{
+    btn.disabled=false; btn.textContent="🗑️ LOG WASTE";
+    showToast("✅ Waste logged!","ok");
+    resetWaste();
+    setTimeout(()=>showScreen("menu"),1400);
+  }).catch(()=>{ btn.disabled=false; btn.textContent="🗑️ LOG WASTE"; showToast("Error — check connection","error"); });
+}
+
 // ── Helpers ───────────────────────────────────────────────────
 function getIconClass(id){ return {"brisket":"ic-cream","ribs":"ic-red","pork_ribs":"ic-cream","chicken":"ic-yellow","pork":"ic-pink","turkey":"ic-yellow","riblets":"ic-cream","ham":"ic-red","gyro":"ic-teal","sausage":"ic-cream","jalapeno":"ic-green"}[id]||"ic-cream"; }
 function getIconEmoji(id){ return {"brisket":"🐄","ribs":"🍖","pork_ribs":"🥩","chicken":"🐔","pork":"🐷","turkey":"🦃","riblets":"🍖","ham":"🍖","gyro":"🌀","sausage":"🌭","jalapeno":"🌶️"}[id]||"🍖"; }
@@ -768,7 +951,7 @@ function updateClock(){
   const dateStr=now.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"});
   const el=document.getElementById("menu-time"); if(el) el.textContent=timeStr;
   const md=document.getElementById("menu-date"); if(md) md.textContent=dateStr;
-  ["log-date","totals-date","eod-date"].forEach(id=>{ const e=document.getElementById(id); if(e) e.textContent=dateStr; });
+  ["log-date","totals-date","eod-date","waste-date"].forEach(id=>{ const e=document.getElementById(id); if(e) e.textContent=dateStr; });
 }
 updateClock();
 setInterval(updateClock,30000);
