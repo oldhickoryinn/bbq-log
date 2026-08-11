@@ -122,13 +122,35 @@
 </style>
 </head>
 <body>
+<div id="debug-hud" style="position:fixed;top:0;left:0;right:0;z-index:9999;background:#004488;color:#fff;font:12px monospace;padding:4px 8px;white-space:pre-wrap;">HUD starting...</div>
+<script>
+(function(){
+  var errors = [];
+  window.onerror = function(msg, src, line, col){ errors.push(msg + " @" + line + ":" + col); return false; };
+  window.addEventListener("unhandledrejection", function(e){ errors.push("PROMISE: " + (e.reason && e.reason.message || e.reason)); });
+  function hud(){
+    var el = document.getElementById("debug-hud");
+    if (!el) return;
+    var act = document.querySelector(".screen.active");
+    var menu = document.getElementById("screen-menu");
+    var disp = "?";
+    if (menu) { try { disp = window.getComputedStyle(menu).display; } catch(e){} }
+    el.textContent = "active screen: " + (act ? act.id : "NONE")
+      + " | screen-menu display: " + disp
+      + " | screens found: " + document.querySelectorAll(".screen").length
+      + (errors.length ? "\nERRORS: " + errors.join(" || ") : " | no JS errors");
+  }
+  setInterval(hud, 500);
+  window.addEventListener("load", hud);
+})();
+</script>
 
 <!-- ══ SCREEN 1 — COOK SELECTION ══ -->
 <div id="screen-cook" class="screen active">
   <div class="cook-screen-header">
     <div class="logo">🔥</div>
     <h2>Old Hickory Inn BBQ</h2>
-    <p>Who is cooking today? <span style="color:#555;font-size:12px;">(debug v1)</span></p>
+    <p>Who is cooking today? <span style="color:#555;font-size:12px;">(debug v2)</span></p>
   </div>
   <div class="cook-divider"></div>
   <div class="cook-grid">
